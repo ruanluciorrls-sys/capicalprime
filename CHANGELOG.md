@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.4.7] - 2026-05-29
+
+### Alterado
+- **Extensão (Versão Interna)**: Atualizada a versão interna da extensão de `2.4.5` para `2.4.6/2.4.7` via `extension.service.ts`.
+- **Origem Forçada**: Aplicada a configuração `EXTENSION_FORCE_PUBLIC_ORIGIN` no servidor Fly.io para garantir que o ZIP baixado pelo painel sempre possua a URL absoluta do backend, evitando conflitos com o proxy da Vercel.
+
+### Versão
+- Sistema, Backend, Dashboard, Extension: `2.4.6` -> `2.4.7`
+
+
 ## [2.4.6] - 2026-05-29
 
 ### Alterado (Configuração Online SQLite)
