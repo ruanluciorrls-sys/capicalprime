@@ -24,7 +24,7 @@ import { QrGateway } from './qr.gateway';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
-        secret: config.get('JWT_SECRET'),
+        secret: config.get('JWT_SECRET', 'aios_dev_fallback_jwt_secret_change_in_prod'),
         signOptions: { expiresIn: config.get('JWT_EXPIRES_IN', '30d') },
       }),
     }),
