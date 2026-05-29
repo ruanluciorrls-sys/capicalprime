@@ -2,7 +2,6 @@
   "name": "ai-project-os",
   "version": "2.4.6",
   "private": true,
-  "packageManager": "npm@11.12.1",
   "workspaces": [
     "apps/*",
     "packages/*"
