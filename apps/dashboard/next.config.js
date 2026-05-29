@@ -14,11 +14,8 @@ const nextConfig = {
     // INTERNAL_API_URL: proxy SSR server-side
     //   Producao (Vercel) → https://meu-backend-aios.fly.dev
     //   Dev local         → http://127.0.0.1:3001
-    const apiBase = (
-      process.env.INTERNAL_API_URL ||
-      process.env.NEXT_PUBLIC_API_URL ||
-      'https://meu-backend-aios.fly.dev'
-    ).replace('localhost', '127.0.0.1');
+    const rawApiBase = process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://meu-backend-aios.fly.dev';
+    const apiBase = rawApiBase.replace(/^["']|["']$/g, '').trim().replace('localhost', '127.0.0.1');
     return [
       {
         source: '/api/:path*',
