@@ -46,6 +46,8 @@ import { RawQrCaptureEntity } from './entities/raw-qr-capture.entity';
               },
             },
             synchronize: config.get('NODE_ENV') !== 'production',
+            migrations: ['dist/database/migrations/*.js'],
+            migrationsRun: true,
             logging: config.get('NODE_ENV') === 'development',
           };
         }

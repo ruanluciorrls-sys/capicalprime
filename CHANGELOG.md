@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.4.6] - 2026-05-29
+
+### Alterado (Configuração Online SQLite)
+- **SQLite no Fly.io**: Configurado o `database.module.ts` para executar migrações automaticamente (`migrationsRun: true`) na inicialização do backend quando em produção.
+- **Volume Permanente**: Adicionado bloco `[mounts]` no `fly.toml` apontando `/app/data` para o volume `aios_data`, garantindo que o banco de dados SQLite não seja apagado a cada reinício do servidor.
+- **Script de Deploy**: Criado `ATUALIZAR_SITES.bat` para realizar deploy simultâneo e automático na Vercel (Frontend) e no Fly.io (Backend).
+
+### Versão
+- Sistema, Backend, Dashboard, Extension: `2.4.5` -> `2.4.6`
+
+
 ## [2.4.5] - 2026-05-29
 
 ### Corrigido (Deploy VPS / SSH timeout)
