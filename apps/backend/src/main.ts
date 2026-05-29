@@ -76,8 +76,8 @@ async function bootstrap() {
   app.enableShutdownHooks();
 
   const port = process.env.PORT ?? 3001;
-  // Bind to '::' (dual-stack IPv6 + IPv4) to fix Node 18+ ECONNREFUSED on localhost
-  await app.listen(port, '::');
+  // Bind to '0.0.0.0' explicitly for Fly.io routing
+  await app.listen(port, '0.0.0.0');
 
   logger.log(`🚀 Backend running on http://localhost:${port}/api/v1`);
   logger.log(`🔌 WebSocket running on http://localhost:${port}`);

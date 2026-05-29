@@ -10,11 +10,15 @@ echo Pressione qualquer tecla para começar a atualizar o seu site no ar...
 pause >nul
 
 echo.
+set /p msg="O que voce mudou nessa atualizacao? (Ex: corrigi cor do botao): "
+if "%msg%"=="" set msg="Atualizacao rapida do site"
+
+echo.
 echo [1/2] Salvando e enviando as alteracoes para o GitHub...
 echo (A Vercel vai detectar isso automaticamente e atualizar o Dashboard)
 echo.
 git add .
-git commit -m "Atualizacao rapida do site"
+git commit -m "%msg%"
 git push origin master
 
 echo.
