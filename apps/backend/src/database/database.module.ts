@@ -46,7 +46,7 @@ import { RawQrCaptureEntity } from './entities/raw-qr-capture.entity';
               },
             },
             synchronize: config.get('NODE_ENV') !== 'production',
-            migrations: ['dist/database/migrations/*.js'],
+            migrations: [__dirname + '/migrations/*.js'],
             migrationsRun: true,
             logging: config.get('NODE_ENV') === 'development',
           };
@@ -77,7 +77,7 @@ import { RawQrCaptureEntity } from './entities/raw-qr-capture.entity';
           // Pode ser explicitamente desabilitado com DB_SYNC=false.
           synchronize:
             String(config.get('DB_SYNC', 'true')).toLowerCase() !== 'false',
-          migrations: ['dist/database/migrations/*.js'],
+          migrations: [__dirname + '/migrations/*.js'],
           migrationsRun: true,
           logging: config.get('NODE_ENV') === 'development',
           // SSL apenas quando explicitamente habilitado via DB_SSL=true.
