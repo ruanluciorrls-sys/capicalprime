@@ -50,4 +50,15 @@ export class HealthController {
   ping() {
     return { pong: true, timestamp: new Date().toISOString() };
   }
+
+  @Get('ip')
+  async getIp() {
+    try {
+      const res = await fetch('https://api.ipify.org?format=json');
+      const data = await res.json() as any;
+      return { ip: data.ip };
+    } catch (e: any) {
+      return { error: 'Failed to fetch IP', details: e.message };
+    }
+  }
 }

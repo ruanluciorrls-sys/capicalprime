@@ -1,7 +1,7 @@
 import { DeviceRegistry } from '../background/device-registry';
 
 const registry = new DeviceRegistry();
-const apiUrl = 'http://177.153.202.47:3001/api/v1';
+const apiUrl = 'https://meu-backend-aios.fly.dev/api/v1';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const token = await registry.getToken();

@@ -1,5 +1,5 @@
 export class QrSender {
-  private readonly apiUrl = 'http://177.153.202.47:3001/api/v1';
+  private readonly apiUrl = 'https://meu-backend-aios.fly.dev/api/v1';
   private lastError: string | null = null;
   private static readonly AUTH_ERR = 'token_invalido_ou_expirado';
 
