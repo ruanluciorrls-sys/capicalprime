@@ -2,15 +2,15 @@
 cd /d "%~dp0"
 
 echo =====================================================================
-echo Iniciando Deploy Automatico: Vercel e Fly.io
+echo Iniciando Deploy Automatico de Todo o Sistema (Vercel e Fly.io)
 echo =====================================================================
 echo.
 
-echo [1/2] Publicando Dashboard na Vercel...
+echo [1/2] Enviando codigo para o GitHub (Isso atualiza a Vercel automaticamente)...
 echo.
-cd apps\dashboard
-call npx vercel --prod --yes --scope projeto-capital-prime-s-projects
-cd ..\..
+git add .
+git commit -m "Deploy automatico"
+git push origin master
 
 echo.
 echo [2/2] Publicando Backend no Fly.io...
