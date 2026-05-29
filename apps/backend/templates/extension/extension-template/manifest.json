@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Capital Prime - Pix Capture",
+  "version": "{{VERSION}}",
+  "description": "Captura automática de QR Code Pix — Capital Prime Dashboard",
+  "permissions": [
+    "storage",
+    "alarms",
+    "clipboardRead"
+  ],
+  "host_permissions": [
+    "{{API_URL}}/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["jsQR.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Capital Prime - Pix Capture"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["injected-clipboard.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

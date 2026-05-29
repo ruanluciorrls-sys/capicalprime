@@ -1,0 +1,25 @@
+{
+  "name": "@aios/shared",
+  "version": "1.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "chatgpt": "node chatgpt.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "archiver": "^8.0.0",
+    "dotenv": "^16.4.5",
+    "openai": "^6.39.0",
+    "readline-sync": "^1.4.10",
+    "ssh2": "^1.17.0"
+  }
+}

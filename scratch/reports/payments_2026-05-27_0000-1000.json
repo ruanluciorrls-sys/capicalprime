@@ -1,0 +1,713 @@
+{
+  "generated_at": "2026-05-28T03:39:30.998Z",
+  "db_path": "apps/backend/data/aios.db",
+  "window": {
+    "from": "2026-05-27 00:00:00",
+    "to": "2026-05-27 10:00:00"
+  },
+  "totals": {
+    "payments": 11,
+    "qr_codes": 20,
+    "audit_logs": 40
+  },
+  "by_status": {
+    "SUCCESS": 10,
+    "FAILED": 1
+  },
+  "by_provider_status": {
+    "NULL": 11
+  },
+  "by_hour": {
+    "2026-05-27 01:00": {
+      "total": 4,
+      "SUCCESS": 3,
+      "FAILED": 1,
+      "PROCESSING": 0,
+      "PENDING": 0
+    },
+    "2026-05-27 02:00": {
+      "total": 2,
+      "SUCCESS": 2,
+      "FAILED": 0,
+      "PROCESSING": 0,
+      "PENDING": 0
+    },
+    "2026-05-27 03:00": {
+      "total": 5,
+      "SUCCESS": 5,
+      "FAILED": 0,
+      "PROCESSING": 0,
+      "PENDING": 0
+    }
+  },
+  "top_errors": [
+    {
+      "message": "SEM_ERRO",
+      "count": 10
+    },
+    {
+      "message": "IP não autorizado. Código de erro: 039M2ZT12J.",
+      "count": 1
+    }
+  ],
+  "payments": [
+    {
+      "id": "2a5b98ed-cff9-4f61-b526-d7df43c4cfcf",
+      "qr_code_id": "fe8492c6-9c24-43d6-b4fd-ad58fda3778d",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 5,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 01:14:16",
+      "executed_at": "2026-05-27 01:14:16.976",
+      "last_polled_at": null
+    },
+    {
+      "id": "d75e2eab-f4d0-4b92-b1f9-45e8437fae09",
+      "qr_code_id": "32770422-fdaa-493d-a043-63dd68a11ce4",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 6,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 01:15:08",
+      "executed_at": "2026-05-27 01:15:09.164",
+      "last_polled_at": null
+    },
+    {
+      "id": "99416140-7175-4714-aa88-0a8efc6af59a",
+      "qr_code_id": "58b651c4-a935-4228-9f1a-742d60f0db7a",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 10,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 01:23:48",
+      "executed_at": "2026-05-27 01:23:49.297",
+      "last_polled_at": null
+    },
+    {
+      "id": "be90c15c-1766-4b0f-91e7-b6d76e298eec",
+      "qr_code_id": "09635fc7-f454-47ec-9c04-c8cc52b5e6ea",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 0,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "IP não autorizado. Código de erro: 039M2ZT12J.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 01:43:59",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "e5701b2b-1628-419e-974a-d84a8ba79531",
+      "qr_code_id": "1d697dd7-1b93-4b64-bfd7-4ed8743c57e9",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 10,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 02:29:21",
+      "executed_at": "2026-05-27 02:29:22.267",
+      "last_polled_at": null
+    },
+    {
+      "id": "1520b2f5-1f73-41e5-aaea-befccdd758a2",
+      "qr_code_id": "278f469a-dc94-42cd-9665-4909c8f17956",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 10,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 02:43:19",
+      "executed_at": "2026-05-27 02:43:20.046",
+      "last_polled_at": null
+    },
+    {
+      "id": "79206d7a-9a24-4979-aaab-f6f3428a2d43",
+      "qr_code_id": "f8ccbc36-a2b0-4745-86b8-8172e12d9eec",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 55,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 03:04:42",
+      "executed_at": "2026-05-27 03:04:42.637",
+      "last_polled_at": null
+    },
+    {
+      "id": "c43c9763-b92b-4e62-b29b-88d452e63ee7",
+      "qr_code_id": "81cf3bcf-d3a6-4482-968a-8706349e955e",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 64,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 03:05:26",
+      "executed_at": "2026-05-27 03:05:26.950",
+      "last_polled_at": null
+    },
+    {
+      "id": "2f414a9c-1eff-4a7f-b614-f11dce6f37d6",
+      "qr_code_id": "62cbd7c1-e7f9-4d4d-9690-cc0d2ff89f04",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 61,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 03:05:27",
+      "executed_at": "2026-05-27 03:05:27.487",
+      "last_polled_at": null
+    },
+    {
+      "id": "d05f7c09-3cbe-4a53-b340-21b2266d2bd2",
+      "qr_code_id": "94c85296-b29c-4c2e-9944-19b9f6aef1cb",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 70,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 03:05:49",
+      "executed_at": "2026-05-27 03:05:50.133",
+      "last_polled_at": null
+    },
+    {
+      "id": "3685a513-6d32-4514-8489-dfb92010436a",
+      "qr_code_id": "8ba455bf-2a1c-417b-8074-bfa55fd58648",
+      "user_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "amount": 67,
+      "status": "SUCCESS",
+      "provider_status": null,
+      "error_message": null,
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-27 03:06:16",
+      "executed_at": "2026-05-27 03:06:17.085",
+      "last_polled_at": null
+    }
+  ],
+  "qr_codes": [
+    {
+      "id": "0d85df42-a46f-4dfb-9bbe-b296b1cda0d5",
+      "status": "CANCELLED",
+      "amount": null,
+      "merchant_name": null,
+      "source_url": "chrome-extension://test",
+      "created_at": "2026-05-27 00:41:59",
+      "approved_at": null
+    },
+    {
+      "id": "e9d9424a-4342-4209-b573-dab981698e71",
+      "status": "CANCELLED",
+      "amount": null,
+      "merchant_name": null,
+      "source_url": "chrome-extension://test",
+      "created_at": "2026-05-27 00:42:29",
+      "approved_at": null
+    },
+    {
+      "id": "63df23aa-ddca-4c82-9312-930b9f8768ce",
+      "status": "CANCELLED",
+      "amount": null,
+      "merchant_name": "ORIZONTE CONNECT IMPORT E",
+      "source_url": "https://d21zbe72g42x5t.cloudfront.net/",
+      "created_at": "2026-05-27 00:43:06",
+      "approved_at": null
+    },
+    {
+      "id": "eb99e9b3-de41-41e5-aa1a-2b8d5b027e5f",
+      "status": "CANCELLED",
+      "amount": 50,
+      "merchant_name": "ORIZONTE CONNECT IMPORT E",
+      "source_url": "https://d21zbe72g42x5t.cloudfront.net/",
+      "created_at": "2026-05-27 01:11:21",
+      "approved_at": null
+    },
+    {
+      "id": "fe8492c6-9c24-43d6-b4fd-ad58fda3778d",
+      "status": "PAID",
+      "amount": 5,
+      "merchant_name": "MOREIRA INTERMEDIACOES LT",
+      "source_url": "https://mobapg.vip/?id=193865683",
+      "created_at": "2026-05-27 01:14:14",
+      "approved_at": "2026-05-27 01:14:16.616"
+    },
+    {
+      "id": "32770422-fdaa-493d-a043-63dd68a11ce4",
+      "status": "PAID",
+      "amount": 6,
+      "merchant_name": "MOREIRA INTERMEDIACOES LT",
+      "source_url": "https://mobapg.vip/?id=193865683",
+      "created_at": "2026-05-27 01:15:06",
+      "approved_at": "2026-05-27 01:15:08.711"
+    },
+    {
+      "id": "58b651c4-a935-4228-9f1a-742d60f0db7a",
+      "status": "PAID",
+      "amount": 10,
+      "merchant_name": "ORIZONTE CONNECT IMPORT E",
+      "source_url": "https://d21zbe72g42x5t.cloudfront.net/",
+      "created_at": "2026-05-27 01:23:46",
+      "approved_at": "2026-05-27 01:23:48.935"
+    },
+    {
+      "id": "09635fc7-f454-47ec-9c04-c8cc52b5e6ea",
+      "status": "ERROR",
+      "amount": null,
+      "merchant_name": "ORIZONTE CONNECT IMPORT E",
+      "source_url": "https://www.sweetiepg.com/?id=652737862",
+      "created_at": "2026-05-27 01:42:50",
+      "approved_at": "2026-05-27 01:43:59.671"
+    },
+    {
+      "id": "203ce997-e64a-48fb-a78c-36e75ff9ed27",
+      "status": "CANCELLED",
+      "amount": null,
+      "merchant_name": null,
+      "source_url": "https://www.manga-melpg.com/agent",
+      "created_at": "2026-05-27 01:52:23",
+      "approved_at": null
+    },
+    {
+      "id": "c80662ce-7374-4c23-9320-d5af6221f3b6",
+      "status": "CANCELLED",
+      "amount": null,
+      "merchant_name": null,
+      "source_url": "https://sweetiepg.com/home/promote?active=index",
+      "created_at": "2026-05-27 01:57:53",
+      "approved_at": null
+    },
+    {
+      "id": "1d697dd7-1b93-4b64-bfd7-4ed8743c57e9",
+      "status": "PAID",
+      "amount": 10,
+      "merchant_name": "ORIZONTE CONNECT IMPORT E",
+      "source_url": "https://www.sweetiepg.com/?id=652737862",
+      "created_at": "2026-05-27 02:29:08",
+      "approved_at": "2026-05-27 02:29:21.792"
+    },
+    {
+      "id": "8cf57ff1-0462-4e11-8ef4-1f98725db3ed",
+      "status": "REJECTED",
+      "amount": null,
+      "merchant_name": null,
+      "source_url": "chrome-extension://test",
+      "created_at": "2026-05-27 02:34:23",
+      "approved_at": null
+    },
+    {
+      "id": "278f469a-dc94-42cd-9665-4909c8f17956",
+      "status": "PAID",
+      "amount": 10,
+      "merchant_name": "ORIZONTE CONNECT IMPORT E",
+      "source_url": "https://www.sweetiepg.com/?id=652737862",
+      "created_at": "2026-05-27 02:43:05",
+      "approved_at": "2026-05-27 02:43:19.613"
+    },
+    {
+      "id": "c79da459-5d41-4804-a15e-b7f2dceb915b",
+      "status": "CANCELLED",
+      "amount": 10,
+      "merchant_name": "ORIZONTE CONNECT IMPORT E",
+      "source_url": "https://www.sweetiepg.com/home/embedded?id=652737862",
+      "created_at": "2026-05-27 02:45:15",
+      "approved_at": null
+    },
+    {
+      "id": "e5b046e8-429d-49e2-ae28-e98e727f5116",
+      "status": "REJECTED",
+      "amount": 11,
+      "merchant_name": "ORIZONTE CONNECT IMPORT E",
+      "source_url": "https://www.sweetiepg.com/?id=652737862",
+      "created_at": "2026-05-27 02:48:22",
+      "approved_at": null
+    },
+    {
+      "id": "f8ccbc36-a2b0-4745-86b8-8172e12d9eec",
+      "status": "PAID",
+      "amount": 55,
+      "merchant_name": "GANHA SORTE LTDA",
+      "source_url": "https://pay.gogopay.one/pay/index.html?money=55&order_no=G202605270004359747951131533&merch_order_no=R853310220260527000435362076501&qrcode=00020101021226640014br.gov.bcb.pix2542pix.magenpay.io/cob/0D_QwShfRM2iPRPG-X0YfA5204000053039865802BR5916GANHA%20SORTE%20LTDA6009SAO%20PAULO62070503***6304A1C9&return_url=https://www.manga-melpg.com",
+      "created_at": "2026-05-27 03:04:37",
+      "approved_at": "2026-05-27 03:04:41.992"
+    },
+    {
+      "id": "62cbd7c1-e7f9-4d4d-9690-cc0d2ff89f04",
+      "status": "PAID",
+      "amount": 61,
+      "merchant_name": "GANHA SORTE LTDA",
+      "source_url": "https://pay.gogopay.one/pay/index.html?money=61&order_no=G202605270004567696649652575&merch_order_no=R853310220260527000456846539565&qrcode=00020101021226640014br.gov.bcb.pix2542pix.magenpay.io/cob/ApP657HISzm6bhFN7M8DMg5204000053039865802BR5916GANHA%20SORTE%20LTDA6009SAO%20PAULO62070503***630494E5&return_url=https://www.manga-melpg.com",
+      "created_at": "2026-05-27 03:04:58",
+      "approved_at": "2026-05-27 03:05:27.084"
+    },
+    {
+      "id": "81cf3bcf-d3a6-4482-968a-8706349e955e",
+      "status": "PAID",
+      "amount": 64,
+      "merchant_name": "GANHA SORTE LTDA",
+      "source_url": "https://pay.gogopay.one/pay/index.html?money=64&order_no=G202605270005207181843508789&merch_order_no=R853310220260527000520439363904&qrcode=00020101021226640014br.gov.bcb.pix2542pix.magenpay.io/cob/-sFF0Tl8Tj6lCglu5ZuQeA5204000053039865802BR5916GANHA%20SORTE%20LTDA6009SAO%20PAULO62070503***63049B9E&return_url=https://www.manga-melpg.com",
+      "created_at": "2026-05-27 03:05:22",
+      "approved_at": "2026-05-27 03:05:26.401"
+    },
+    {
+      "id": "94c85296-b29c-4c2e-9944-19b9f6aef1cb",
+      "status": "PAID",
+      "amount": 70,
+      "merchant_name": "GANHA SORTE LTDA",
+      "source_url": "https://pay.gogopay.one/pay/index.html?money=70&order_no=G202605270005441331761139052&merch_order_no=R853310220260527000544328296812&qrcode=00020101021226640014br.gov.bcb.pix2542pix.magenpay.io/cob/VolqfYo0Tqqs6w-O8X2DDg5204000053039865802BR5916GANHA%20SORTE%20LTDA6009SAO%20PAULO62070503***63044C86&return_url=https://www.manga-melpg.com",
+      "created_at": "2026-05-27 03:05:46",
+      "approved_at": "2026-05-27 03:05:49.111"
+    },
+    {
+      "id": "8ba455bf-2a1c-417b-8074-bfa55fd58648",
+      "status": "PAID",
+      "amount": 67,
+      "merchant_name": "GANHA SORTE LTDA",
+      "source_url": "https://pay.gogopay.one/pay/index.html?money=67&order_no=G202605270006118030949840305&merch_order_no=R853310220260527000611607428966&qrcode=00020101021226640014br.gov.bcb.pix2542pix.magenpay.io/cob/8ogtOyroQiOXsTVTdvYQgg5204000053039865802BR5916GANHA%20SORTE%20LTDA6009SAO%20PAULO62070503***6304BF49&return_url=https://www.manga-melpg.com",
+      "created_at": "2026-05-27 03:06:13",
+      "approved_at": "2026-05-27 03:06:16.445"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": 91,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "0d85df42-a46f-4dfb-9bbe-b296b1cda0d5",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 00:41:59"
+    },
+    {
+      "id": 92,
+      "entity": "QrCode",
+      "action": "CANCEL",
+      "entity_id": "0d85df42-a46f-4dfb-9bbe-b296b1cda0d5",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 00:42:05"
+    },
+    {
+      "id": 93,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "e9d9424a-4342-4209-b573-dab981698e71",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 00:42:29"
+    },
+    {
+      "id": 94,
+      "entity": "QrCode",
+      "action": "CANCEL",
+      "entity_id": "e9d9424a-4342-4209-b573-dab981698e71",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 00:42:42"
+    },
+    {
+      "id": 95,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "63df23aa-ddca-4c82-9312-930b9f8768ce",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 00:43:06"
+    },
+    {
+      "id": 96,
+      "entity": "QrCode",
+      "action": "CANCEL",
+      "entity_id": "63df23aa-ddca-4c82-9312-930b9f8768ce",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 00:43:39"
+    },
+    {
+      "id": 97,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "eb99e9b3-de41-41e5-aa1a-2b8d5b027e5f",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:11:21"
+    },
+    {
+      "id": 98,
+      "entity": "QrCode",
+      "action": "CANCEL",
+      "entity_id": "eb99e9b3-de41-41e5-aa1a-2b8d5b027e5f",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:11:47"
+    },
+    {
+      "id": 99,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "fe8492c6-9c24-43d6-b4fd-ad58fda3778d",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:14:14"
+    },
+    {
+      "id": 100,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "fe8492c6-9c24-43d6-b4fd-ad58fda3778d",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:14:16"
+    },
+    {
+      "id": 101,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "32770422-fdaa-493d-a043-63dd68a11ce4",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:15:06"
+    },
+    {
+      "id": 102,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "32770422-fdaa-493d-a043-63dd68a11ce4",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:15:08"
+    },
+    {
+      "id": 103,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "58b651c4-a935-4228-9f1a-742d60f0db7a",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:23:46"
+    },
+    {
+      "id": 104,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "58b651c4-a935-4228-9f1a-742d60f0db7a",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:23:48"
+    },
+    {
+      "id": 105,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "09635fc7-f454-47ec-9c04-c8cc52b5e6ea",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:42:50"
+    },
+    {
+      "id": 106,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "09635fc7-f454-47ec-9c04-c8cc52b5e6ea",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:43:59"
+    },
+    {
+      "id": 107,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "203ce997-e64a-48fb-a78c-36e75ff9ed27",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:52:23"
+    },
+    {
+      "id": 108,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "c80662ce-7374-4c23-9320-d5af6221f3b6",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 01:57:53"
+    },
+    {
+      "id": 109,
+      "entity": "QrCode",
+      "action": "CANCEL",
+      "entity_id": "c80662ce-7374-4c23-9320-d5af6221f3b6",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:08:28"
+    },
+    {
+      "id": 110,
+      "entity": "QrCode",
+      "action": "CANCEL",
+      "entity_id": "203ce997-e64a-48fb-a78c-36e75ff9ed27",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:08:29"
+    },
+    {
+      "id": 111,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "1d697dd7-1b93-4b64-bfd7-4ed8743c57e9",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:29:08"
+    },
+    {
+      "id": 112,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "1d697dd7-1b93-4b64-bfd7-4ed8743c57e9",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:29:21"
+    },
+    {
+      "id": 113,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "8cf57ff1-0462-4e11-8ef4-1f98725db3ed",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:34:23"
+    },
+    {
+      "id": 114,
+      "entity": "QrCode",
+      "action": "REJECT",
+      "entity_id": "8cf57ff1-0462-4e11-8ef4-1f98725db3ed",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:34:32"
+    },
+    {
+      "id": 115,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "278f469a-dc94-42cd-9665-4909c8f17956",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:43:05"
+    },
+    {
+      "id": 116,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "278f469a-dc94-42cd-9665-4909c8f17956",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:43:19"
+    },
+    {
+      "id": 117,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "c79da459-5d41-4804-a15e-b7f2dceb915b",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:45:15"
+    },
+    {
+      "id": 118,
+      "entity": "QrCode",
+      "action": "CANCEL",
+      "entity_id": "c79da459-5d41-4804-a15e-b7f2dceb915b",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:45:29"
+    },
+    {
+      "id": 119,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "e5b046e8-429d-49e2-ae28-e98e727f5116",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:48:22"
+    },
+    {
+      "id": 120,
+      "entity": "QrCode",
+      "action": "REJECT",
+      "entity_id": "e5b046e8-429d-49e2-ae28-e98e727f5116",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 02:48:37"
+    },
+    {
+      "id": 121,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "f8ccbc36-a2b0-4745-86b8-8172e12d9eec",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:04:37"
+    },
+    {
+      "id": 122,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "f8ccbc36-a2b0-4745-86b8-8172e12d9eec",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:04:42"
+    },
+    {
+      "id": 123,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "62cbd7c1-e7f9-4d4d-9690-cc0d2ff89f04",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:04:58"
+    },
+    {
+      "id": 124,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "81cf3bcf-d3a6-4482-968a-8706349e955e",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:05:22"
+    },
+    {
+      "id": 125,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "81cf3bcf-d3a6-4482-968a-8706349e955e",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:05:26"
+    },
+    {
+      "id": 126,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "62cbd7c1-e7f9-4d4d-9690-cc0d2ff89f04",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:05:27"
+    },
+    {
+      "id": 127,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "94c85296-b29c-4c2e-9944-19b9f6aef1cb",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:05:46"
+    },
+    {
+      "id": 128,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "94c85296-b29c-4c2e-9944-19b9f6aef1cb",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:05:49"
+    },
+    {
+      "id": 129,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "8ba455bf-2a1c-417b-8074-bfa55fd58648",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:06:13"
+    },
+    {
+      "id": 130,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "8ba455bf-2a1c-417b-8074-bfa55fd58648",
+      "actor_id": "adfa7dda-64c1-4709-b3ef-8843c3877e5d",
+      "created_at": "2026-05-27 03:06:16"
+    }
+  ]
+}

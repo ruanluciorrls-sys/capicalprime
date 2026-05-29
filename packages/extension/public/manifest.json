@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Capital Prime ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Pix Capture",
+  "version": "2.4.5",
+  "description": "Captura automÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡tica de QR Codes Pix ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Capital Prime",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "clipboardRead",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://177.153.202.47:3001/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Capital Prime"
+  }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+{
+  "name": "ai-project-os",
+  "version": "2.4.5",
+  "private": true,
+  "packageManager": "npm@10.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:backend": "npm run dev --workspace=@aios/backend",
+    "dev:dashboard": "npm run dev --workspace=@aios/dashboard",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "migration:run": "turbo run migration:run --filter=backend",
+    "migration:generate": "turbo run migration:generate --filter=backend"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=20 <23",
+    "npm": ">=10.0.0"
+  }
+}
+
+
+
+
+
+
+

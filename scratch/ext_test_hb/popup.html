@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>AI Project OS</title><style>
+body { width: 300px; padding: 16px; font-family: system-ui; background: #0f172a; color: white; }
+.header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.logo { width: 32px; height: 32px; background: #3b82f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.status { display: flex; align-items: center; gap: 6px; margin-top: 4px; font-size: 12px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot.online { background: #10b981; box-shadow: 0 0 6px #10b981; }
+.dot.offline { background: #ef4444; }
+button { width: 100%; background: #3b82f6; border: none; padding: 8px; border-radius: 8px; color: white; margin-top: 12px; cursor: pointer; }
+#message { font-size: 12px; margin-top: 8px; text-align: center; }
+.success { color: #10b981; }
+.error { color: #ef4444; }
+.version { font-size: 10px; text-align: center; margin-top: 12px; color: #64748b; }
+</style></head>
+<body>
+<div class="header"><div class="logo">⚡</div><div><b>AI Project OS</b><div class="status"><div class="dot offline" id="dot"></div><span id="statusText">Desconectado</span></div></div></div>
+<button id="testBtn">Testar Captura de Pix</button>
+<div id="message"></div>
+<div class="version" id="version"></div>
+<script src="popup.js"></script>
+</body>
+</html>

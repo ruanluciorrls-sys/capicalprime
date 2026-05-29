@@ -1,0 +1,6 @@
+export const CONFIG = {
+  API_URL: 'http://localhost:3001/api/v1',
+  WS_URL: 'http://localhost:3001',
+  DEVICE_TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxYTUxNjc3MC03ZTg3LTRjMDEtYmVlMi1jMTkyYjFiNjM1M2YiLCJkZXZpY2VJZCI6IjM4ZWNlYTdmLWY4YTktNDkzMy04MDg3LTdiYjkxOGYwNjE0NiIsImlhdCI6MTc4MDAwODI4OCwiZXhwIjoxODExNTQ0Mjg4fQ.wU1oYS_33UkMOfX5-J-zTieCoJ-XbkCSzO7y_diBldU',
+  VERSION: '2.2.3'
+};

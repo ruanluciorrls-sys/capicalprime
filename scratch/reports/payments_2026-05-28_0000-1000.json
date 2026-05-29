@@ -1,0 +1,1011 @@
+{
+  "generated_at": "2026-05-28T03:38:22.986Z",
+  "db_path": "apps/backend/data/aios.db",
+  "window": {
+    "from": "2026-05-28 00:00:00",
+    "to": "2026-05-28 10:00:00"
+  },
+  "totals": {
+    "payments": 21,
+    "qr_codes": 24,
+    "audit_logs": 53
+  },
+  "by_status": {
+    "FAILED": 19,
+    "SUCCESS": 2
+  },
+  "by_provider_status": {
+    "NULL": 10,
+    "FAILED": 9,
+    "CONFIRMED": 2
+  },
+  "by_hour": {
+    "2026-05-28 01:00": {
+      "total": 8,
+      "SUCCESS": 0,
+      "FAILED": 8,
+      "PROCESSING": 0,
+      "PENDING": 0
+    },
+    "2026-05-28 02:00": {
+      "total": 8,
+      "SUCCESS": 0,
+      "FAILED": 8,
+      "PROCESSING": 0,
+      "PENDING": 0
+    },
+    "2026-05-28 03:00": {
+      "total": 5,
+      "SUCCESS": 2,
+      "FAILED": 3,
+      "PROCESSING": 0,
+      "PENDING": 0
+    }
+  },
+  "top_errors": [
+    {
+      "message": "Pix failed pelo provedor.",
+      "count": 6
+    },
+    {
+      "message": "O payload informado é inválido.",
+      "count": 5
+    },
+    {
+      "message": "IP não autorizado. Código de erro: 03D0SSPWO4.",
+      "count": 3
+    },
+    {
+      "message": "Pix recusado pela Asaas: Pagamento rejeitado pelo PSP do recebedor",
+      "count": 3
+    },
+    {
+      "message": "O payload informado é inválido. (código: invalid_action)",
+      "count": 2
+    },
+    {
+      "message": "SEM_ERRO",
+      "count": 2
+    }
+  ],
+  "payments": [
+    {
+      "id": "f06e5783-7f52-4a3b-9a71-67d0b3ef8f56",
+      "qr_code_id": "6d0d4a94-228d-4cad-b93b-783ded873031",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 72,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "IP não autorizado. Código de erro: 03D0SSPWO4.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 01:19:57",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "80a66579-39c9-4ffb-87e7-fb27483131ac",
+      "qr_code_id": "b8c83a08-81a6-4886-94bc-13bfafeded6e",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "IP não autorizado. Código de erro: 03D0SSPWO4.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 01:22:00",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "70df8bee-25a8-45fe-a2b8-f57648bc4bcd",
+      "qr_code_id": "3d909de6-e4f0-4412-a085-3f6b509364ec",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 11,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "IP não autorizado. Código de erro: 03D0SSPWO4.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 01:24:31",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "a2d76bcc-0d4a-4004-ab0d-ec394b8d1ab7",
+      "qr_code_id": "9c423ad7-4733-4ef6-9b92-d1c7352e9d95",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "O payload informado é inválido.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 01:25:22",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "9b5cdfa2-9c94-47cf-861d-7aac337c9094",
+      "qr_code_id": "2feccea4-88dd-4f21-b6ba-3edc10bd6c1f",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "O payload informado é inválido.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 01:35:27",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "20bb7e26-836d-4ec8-a344-1c5daa5787ae",
+      "qr_code_id": "8812443c-314c-4ca7-b665-c1ba7dd4968c",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 11,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "O payload informado é inválido.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 01:39:06",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "4f8ef025-229f-4016-baf4-d6e9db853d2a",
+      "qr_code_id": "1006c783-f701-428d-b284-a87e51ed0fb0",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "O payload informado é inválido. (código: invalid_action)",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 01:46:00",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "14524aad-c7d2-45f4-a46c-4c8d131da4f8",
+      "qr_code_id": "b9dc025b-0435-44a5-b303-b6b54f4d8864",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "O payload informado é inválido. (código: invalid_action)",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 01:46:47",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "634c933e-e187-41c1-b621-b0317309009f",
+      "qr_code_id": "03f2c183-f8b1-49da-936b-49cc3d0419d6",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix failed pelo provedor.",
+      "provider_payment_id": "dc7eb487-4ad2-4b1a-a0ca-7d41ff3c8125",
+      "bank_end2end_id": "dc7eb487-4ad2-4b1a-a0ca-7d41ff3c8125",
+      "created_at": "2026-05-28 02:05:31",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 02:05:45.942"
+    },
+    {
+      "id": "3a67f8d3-566d-4419-be4a-3fbfc72fbb82",
+      "qr_code_id": "c85fb349-a82d-4738-96c4-35999c759f5a",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix failed pelo provedor.",
+      "provider_payment_id": "07fc7cc2-3865-4ba0-a782-3d7b6a2e2a6e",
+      "bank_end2end_id": "07fc7cc2-3865-4ba0-a782-3d7b6a2e2a6e",
+      "created_at": "2026-05-28 02:15:05",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 02:15:15.859"
+    },
+    {
+      "id": "b4a2e655-d9ce-4e14-b726-b33a959c7d16",
+      "qr_code_id": "0258d85c-e6c5-4115-bff7-ed4c06dedc2b",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 13,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix failed pelo provedor.",
+      "provider_payment_id": "d2d1523e-17e9-45f4-afb5-879d67752e0b",
+      "bank_end2end_id": "d2d1523e-17e9-45f4-afb5-879d67752e0b",
+      "created_at": "2026-05-28 02:23:44",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 02:23:52.055"
+    },
+    {
+      "id": "72b56e92-1d9d-4adb-9532-1432e0c114a2",
+      "qr_code_id": "9af0a8c9-860f-44c6-ae41-e1e693cbef99",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 11,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix failed pelo provedor.",
+      "provider_payment_id": "fe421090-289b-4ead-93b0-77fa7f9b60e4",
+      "bank_end2end_id": "fe421090-289b-4ead-93b0-77fa7f9b60e4",
+      "created_at": "2026-05-28 02:25:14",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 02:25:22.182"
+    },
+    {
+      "id": "5a1350a7-a679-4bfa-a74f-df090c43b78c",
+      "qr_code_id": "05ce7624-c553-4ab5-b4a5-31d03f8b8f47",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 11,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix failed pelo provedor.",
+      "provider_payment_id": "375009b9-2f89-4c22-9a5b-419acdfde537",
+      "bank_end2end_id": "375009b9-2f89-4c22-9a5b-419acdfde537",
+      "created_at": "2026-05-28 02:26:25",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 02:26:37.242"
+    },
+    {
+      "id": "c8bed0b3-9d89-4625-a745-c508a53ac080",
+      "qr_code_id": "d6908759-f257-41cb-97f3-eecc573b4a79",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix failed pelo provedor.",
+      "provider_payment_id": "e6a4fcbe-3332-4b64-9925-935dd0917251",
+      "bank_end2end_id": "e6a4fcbe-3332-4b64-9925-935dd0917251",
+      "created_at": "2026-05-28 02:31:33",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 02:31:36.976"
+    },
+    {
+      "id": "2d08b9fd-3376-4d1c-881a-21979ccf81ff",
+      "qr_code_id": "7aea024a-46dc-4d36-aced-f57d3e3792a4",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix recusado pela Asaas: Pagamento rejeitado pelo PSP do recebedor",
+      "provider_payment_id": "519bacdd-01c0-461a-b4d0-ee5849f93380",
+      "bank_end2end_id": "519bacdd-01c0-461a-b4d0-ee5849f93380",
+      "created_at": "2026-05-28 02:38:21",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 02:38:57.222"
+    },
+    {
+      "id": "a2b75c4a-711f-48d6-bc04-b4ba47b0bf0f",
+      "qr_code_id": "898aebfb-140c-44a7-86d6-2d937a3d2f10",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 11,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix recusado pela Asaas: Pagamento rejeitado pelo PSP do recebedor",
+      "provider_payment_id": "c09cd6d4-1fe0-4d75-b07a-e310fc780e16",
+      "bank_end2end_id": "c09cd6d4-1fe0-4d75-b07a-e310fc780e16",
+      "created_at": "2026-05-28 02:53:57",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 02:54:29.715"
+    },
+    {
+      "id": "e8ab84d4-fbd6-45c2-9fe9-d35e3a3afeb9",
+      "qr_code_id": "86c4d60e-8546-46af-b77a-17e56c74da38",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 11,
+      "status": "SUCCESS",
+      "provider_status": "CONFIRMED",
+      "error_message": null,
+      "provider_payment_id": "d8a3264a-f486-4a95-bb4a-a6b7d0ecd014",
+      "bank_end2end_id": "E19540550202605280301G8Hga6ZiPHV",
+      "created_at": "2026-05-28 03:00:53",
+      "executed_at": "2026-05-28 03:01:29.907",
+      "last_polled_at": "2026-05-28 03:01:29.898"
+    },
+    {
+      "id": "c3264ae5-8715-4225-83a9-42c30acb59c3",
+      "qr_code_id": "d013098d-2305-4aa2-b604-29893fd60fb7",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 12,
+      "status": "FAILED",
+      "provider_status": "FAILED",
+      "error_message": "Pix recusado pela Asaas: Pagamento rejeitado pelo PSP do recebedor",
+      "provider_payment_id": "5bd3c7fb-d7b8-464c-b1b1-68936cb53c0d",
+      "bank_end2end_id": "5bd3c7fb-d7b8-464c-b1b1-68936cb53c0d",
+      "created_at": "2026-05-28 03:06:50",
+      "executed_at": null,
+      "last_polled_at": "2026-05-28 03:07:00.054"
+    },
+    {
+      "id": "7c0cfd08-185f-4a48-87e4-0b0c9e2cb8b2",
+      "qr_code_id": "35fc2a1d-c113-4576-99f5-c877ccf9db22",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "SUCCESS",
+      "provider_status": "CONFIRMED",
+      "error_message": null,
+      "provider_payment_id": "5c9d38dc-1f85-418e-bee4-161a8d049282",
+      "bank_end2end_id": "E195405502026052803128LRSK1UQ59D",
+      "created_at": "2026-05-28 03:12:03",
+      "executed_at": "2026-05-28 03:12:09.400",
+      "last_polled_at": "2026-05-28 03:12:09.393"
+    },
+    {
+      "id": "42772fb4-04f7-4394-915d-1396a029400b",
+      "qr_code_id": "c438ad84-6a3e-407b-a3cf-45753d6144dc",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "O payload informado é inválido.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 03:23:22",
+      "executed_at": null,
+      "last_polled_at": null
+    },
+    {
+      "id": "e3b8be8b-bf6a-4520-9aa8-1922d6a31379",
+      "qr_code_id": "5133001f-d4b0-4e07-97b1-c5c408b0c124",
+      "user_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "amount": 10,
+      "status": "FAILED",
+      "provider_status": null,
+      "error_message": "O payload informado é inválido.",
+      "provider_payment_id": null,
+      "bank_end2end_id": null,
+      "created_at": "2026-05-28 03:31:35",
+      "executed_at": null,
+      "last_polled_at": null
+    }
+  ],
+  "qr_codes": [
+    {
+      "id": "8e9b27de-fc46-4d88-b897-70081494bb61",
+      "status": "REJECTED",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "manual",
+      "created_at": "2026-05-28 00:28:03",
+      "approved_at": null
+    },
+    {
+      "id": "972253e2-4cdc-4647-9d4d-7ee75ad55ffb",
+      "status": "REJECTED",
+      "amount": 11,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "manual",
+      "created_at": "2026-05-28 00:28:03",
+      "approved_at": null
+    },
+    {
+      "id": "6d0d4a94-228d-4cad-b93b-783ded873031",
+      "status": "REJECTED",
+      "amount": 72,
+      "merchant_name": "BANKSLTDA6",
+      "source_url": "manual",
+      "created_at": "2026-05-28 01:19:52",
+      "approved_at": "2026-05-28 01:19:57.892"
+    },
+    {
+      "id": "b8c83a08-81a6-4886-94bc-13bfafeded6e",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE600",
+      "source_url": "https://www.sweetiepg.com/?id=652737862&currency=BRL",
+      "created_at": "2026-05-28 01:21:59",
+      "approved_at": "2026-05-28 01:22:00.766"
+    },
+    {
+      "id": "3d909de6-e4f0-4412-a085-3f6b509364ec",
+      "status": "ERROR",
+      "amount": 11,
+      "merchant_name": "ORIZONTECONNECTIMPORTE600",
+      "source_url": "https://www.sweetiepg.com/?id=652737862&currency=BRL",
+      "created_at": "2026-05-28 01:24:29",
+      "approved_at": "2026-05-28 01:24:31.382"
+    },
+    {
+      "id": "9c423ad7-4733-4ef6-9b92-d1c7352e9d95",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "https://www.sweetiepg.com/?id=652737862&currency=BRL",
+      "created_at": "2026-05-28 01:25:20",
+      "approved_at": "2026-05-28 01:25:22.061"
+    },
+    {
+      "id": "2feccea4-88dd-4f21-b6ba-3edc10bd6c1f",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "https://www.sweetiepg.com/?currency=BRL",
+      "created_at": "2026-05-28 01:35:23",
+      "approved_at": "2026-05-28 01:35:27.176"
+    },
+    {
+      "id": "8812443c-314c-4ca7-b665-c1ba7dd4968c",
+      "status": "ERROR",
+      "amount": 11,
+      "merchant_name": "ALCIDESREISNETO60",
+      "source_url": "manual",
+      "created_at": "2026-05-28 01:39:05",
+      "approved_at": "2026-05-28 01:39:06.224"
+    },
+    {
+      "id": "1006c783-f701-428d-b284-a87e51ed0fb0",
+      "status": "REJECTED",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "manual",
+      "created_at": "2026-05-28 01:45:58",
+      "approved_at": "2026-05-28 01:46:00.382"
+    },
+    {
+      "id": "b9dc025b-0435-44a5-b303-b6b54f4d8864",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "https://www.sweetiepg.com/home/mine",
+      "created_at": "2026-05-28 01:46:45",
+      "approved_at": "2026-05-28 01:46:47.702"
+    },
+    {
+      "id": "03f2c183-f8b1-49da-936b-49cc3d0419d6",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "ALCIDESREISNETO60",
+      "source_url": "https://www.sweetiepg.com/?currency=BRL",
+      "created_at": "2026-05-28 02:05:29",
+      "approved_at": "2026-05-28 02:05:31.940"
+    },
+    {
+      "id": "c85fb349-a82d-4738-96c4-35999c759f5a",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE600",
+      "source_url": "https://www.sweetiepg.com/?currency=BRL",
+      "created_at": "2026-05-28 02:15:04",
+      "approved_at": "2026-05-28 02:15:05.841"
+    },
+    {
+      "id": "0258d85c-e6c5-4115-bff7-ed4c06dedc2b",
+      "status": "ERROR",
+      "amount": 13,
+      "merchant_name": "ORIZONTECONNECTIMPORTE600",
+      "source_url": "manual",
+      "created_at": "2026-05-28 02:23:33",
+      "approved_at": "2026-05-28 02:24:40.015"
+    },
+    {
+      "id": "9af0a8c9-860f-44c6-ae41-e1e693cbef99",
+      "status": "ERROR",
+      "amount": 11,
+      "merchant_name": "ORIZONTECONNECTIMPORTE600",
+      "source_url": "https://www.sweetiepg.com/?currency=BRL",
+      "created_at": "2026-05-28 02:25:13",
+      "approved_at": "2026-05-28 02:25:14.774"
+    },
+    {
+      "id": "05ce7624-c553-4ab5-b4a5-31d03f8b8f47",
+      "status": "ERROR",
+      "amount": 11,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "manual",
+      "created_at": "2026-05-28 02:26:19",
+      "approved_at": "2026-05-28 02:26:25.773"
+    },
+    {
+      "id": "d6908759-f257-41cb-97f3-eecc573b4a79",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE600",
+      "source_url": "https://www.sweetiepg.com/?currency=BRL",
+      "created_at": "2026-05-28 02:31:32",
+      "approved_at": "2026-05-28 02:31:33.944"
+    },
+    {
+      "id": "7aea024a-46dc-4d36-aced-f57d3e3792a4",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "manual",
+      "created_at": "2026-05-28 02:38:20",
+      "approved_at": "2026-05-28 02:42:51.352"
+    },
+    {
+      "id": "898aebfb-140c-44a7-86d6-2d937a3d2f10",
+      "status": "ERROR",
+      "amount": 11,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "manual",
+      "created_at": "2026-05-28 02:53:55",
+      "approved_at": "2026-05-28 02:53:57.176"
+    },
+    {
+      "id": "86c4d60e-8546-46af-b77a-17e56c74da38",
+      "status": "PAID",
+      "amount": 11,
+      "merchant_name": "ORIZONTECONNECTIMPORTE600",
+      "source_url": "manual",
+      "created_at": "2026-05-28 03:00:51",
+      "approved_at": "2026-05-28 03:00:53.117"
+    },
+    {
+      "id": "d013098d-2305-4aa2-b604-29893fd60fb7",
+      "status": "ERROR",
+      "amount": 12,
+      "merchant_name": "ORIZONTECONNECTIMPORTE601",
+      "source_url": "manual",
+      "created_at": "2026-05-28 03:06:48",
+      "approved_at": "2026-05-28 03:06:50.011"
+    },
+    {
+      "id": "35fc2a1d-c113-4576-99f5-c877ccf9db22",
+      "status": "PAID",
+      "amount": 10,
+      "merchant_name": "GOLTDA6",
+      "source_url": "manual",
+      "created_at": "2026-05-28 03:11:54",
+      "approved_at": "2026-05-28 03:12:03.169"
+    },
+    {
+      "id": "cedcaa55-90b2-4397-95e8-1e8dbf564144",
+      "status": "REJECTED",
+      "amount": 11,
+      "merchant_name": "BASTOSTORRESGESTAODE6009S",
+      "source_url": "manual",
+      "created_at": "2026-05-28 03:21:40",
+      "approved_at": null
+    },
+    {
+      "id": "c438ad84-6a3e-407b-a3cf-45753d6144dc",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "PIXELMINDSJOGOS,TECNOL600",
+      "source_url": "manual",
+      "created_at": "2026-05-28 03:23:20",
+      "approved_at": "2026-05-28 03:23:22.310"
+    },
+    {
+      "id": "5133001f-d4b0-4e07-97b1-c5c408b0c124",
+      "status": "ERROR",
+      "amount": 10,
+      "merchant_name": "BASTOSTORRESGESTAODE6009S",
+      "source_url": "manual",
+      "created_at": "2026-05-28 03:31:10",
+      "approved_at": "2026-05-28 03:31:35.304"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": 195,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "8e9b27de-fc46-4d88-b897-70081494bb61",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 00:28:03"
+    },
+    {
+      "id": 196,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "972253e2-4cdc-4647-9d4d-7ee75ad55ffb",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 00:28:03"
+    },
+    {
+      "id": 197,
+      "entity": "QrCode",
+      "action": "REJECT",
+      "entity_id": "972253e2-4cdc-4647-9d4d-7ee75ad55ffb",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 00:28:06"
+    },
+    {
+      "id": 198,
+      "entity": "QrCode",
+      "action": "REJECT",
+      "entity_id": "8e9b27de-fc46-4d88-b897-70081494bb61",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 00:28:07"
+    },
+    {
+      "id": 199,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "6d0d4a94-228d-4cad-b93b-783ded873031",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:19:52"
+    },
+    {
+      "id": 200,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "6d0d4a94-228d-4cad-b93b-783ded873031",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:19:57"
+    },
+    {
+      "id": 201,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "b8c83a08-81a6-4886-94bc-13bfafeded6e",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:21:59"
+    },
+    {
+      "id": 202,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "b8c83a08-81a6-4886-94bc-13bfafeded6e",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:22:00"
+    },
+    {
+      "id": 203,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "3d909de6-e4f0-4412-a085-3f6b509364ec",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:24:29"
+    },
+    {
+      "id": 204,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "3d909de6-e4f0-4412-a085-3f6b509364ec",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:24:31"
+    },
+    {
+      "id": 205,
+      "entity": "QrCode",
+      "action": "REJECT",
+      "entity_id": "6d0d4a94-228d-4cad-b93b-783ded873031",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:24:46"
+    },
+    {
+      "id": 206,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "9c423ad7-4733-4ef6-9b92-d1c7352e9d95",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:25:20"
+    },
+    {
+      "id": 207,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "9c423ad7-4733-4ef6-9b92-d1c7352e9d95",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:25:22"
+    },
+    {
+      "id": 208,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "2feccea4-88dd-4f21-b6ba-3edc10bd6c1f",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:35:23"
+    },
+    {
+      "id": 209,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "2feccea4-88dd-4f21-b6ba-3edc10bd6c1f",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:35:27"
+    },
+    {
+      "id": 210,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "8812443c-314c-4ca7-b665-c1ba7dd4968c",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:39:05"
+    },
+    {
+      "id": 211,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "8812443c-314c-4ca7-b665-c1ba7dd4968c",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:39:06"
+    },
+    {
+      "id": 212,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "1006c783-f701-428d-b284-a87e51ed0fb0",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:45:58"
+    },
+    {
+      "id": 213,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "1006c783-f701-428d-b284-a87e51ed0fb0",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:46:00"
+    },
+    {
+      "id": 214,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "b9dc025b-0435-44a5-b303-b6b54f4d8864",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:46:45"
+    },
+    {
+      "id": 215,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "b9dc025b-0435-44a5-b303-b6b54f4d8864",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 01:46:47"
+    },
+    {
+      "id": 216,
+      "entity": "QrCode",
+      "action": "REJECT",
+      "entity_id": "1006c783-f701-428d-b284-a87e51ed0fb0",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:02:58"
+    },
+    {
+      "id": 217,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "03f2c183-f8b1-49da-936b-49cc3d0419d6",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:05:29"
+    },
+    {
+      "id": 218,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "03f2c183-f8b1-49da-936b-49cc3d0419d6",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:05:31"
+    },
+    {
+      "id": 219,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "c85fb349-a82d-4738-96c4-35999c759f5a",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:15:04"
+    },
+    {
+      "id": 220,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "c85fb349-a82d-4738-96c4-35999c759f5a",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:15:05"
+    },
+    {
+      "id": 221,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "0258d85c-e6c5-4115-bff7-ed4c06dedc2b",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:23:33"
+    },
+    {
+      "id": 222,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "0258d85c-e6c5-4115-bff7-ed4c06dedc2b",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:23:44"
+    },
+    {
+      "id": 223,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "0258d85c-e6c5-4115-bff7-ed4c06dedc2b",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:24:40"
+    },
+    {
+      "id": 224,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "9af0a8c9-860f-44c6-ae41-e1e693cbef99",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:25:13"
+    },
+    {
+      "id": 225,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "9af0a8c9-860f-44c6-ae41-e1e693cbef99",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:25:14"
+    },
+    {
+      "id": 226,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "05ce7624-c553-4ab5-b4a5-31d03f8b8f47",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:26:19"
+    },
+    {
+      "id": 227,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "05ce7624-c553-4ab5-b4a5-31d03f8b8f47",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:26:25"
+    },
+    {
+      "id": 228,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "d6908759-f257-41cb-97f3-eecc573b4a79",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:31:32"
+    },
+    {
+      "id": 229,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "d6908759-f257-41cb-97f3-eecc573b4a79",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:31:33"
+    },
+    {
+      "id": 230,
+      "entity": "QrCode",
+      "action": "INGEST",
+      "entity_id": "7aea024a-46dc-4d36-aced-f57d3e3792a4",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:38:20"
+    },
+    {
+      "id": 231,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "7aea024a-46dc-4d36-aced-f57d3e3792a4",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:38:21"
+    },
+    {
+      "id": 232,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "7aea024a-46dc-4d36-aced-f57d3e3792a4",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:42:51"
+    },
+    {
+      "id": 233,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "898aebfb-140c-44a7-86d6-2d937a3d2f10",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:53:55"
+    },
+    {
+      "id": 234,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "898aebfb-140c-44a7-86d6-2d937a3d2f10",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 02:53:57"
+    },
+    {
+      "id": 235,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "86c4d60e-8546-46af-b77a-17e56c74da38",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:00:51"
+    },
+    {
+      "id": 236,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "86c4d60e-8546-46af-b77a-17e56c74da38",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:00:53"
+    },
+    {
+      "id": 237,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "d013098d-2305-4aa2-b604-29893fd60fb7",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:06:48"
+    },
+    {
+      "id": 238,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "d013098d-2305-4aa2-b604-29893fd60fb7",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:06:50"
+    },
+    {
+      "id": 239,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "35fc2a1d-c113-4576-99f5-c877ccf9db22",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:11:54"
+    },
+    {
+      "id": 240,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "35fc2a1d-c113-4576-99f5-c877ccf9db22",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:12:03"
+    },
+    {
+      "id": 241,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "cedcaa55-90b2-4397-95e8-1e8dbf564144",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:21:40"
+    },
+    {
+      "id": 242,
+      "entity": "QrCode",
+      "action": "REJECT",
+      "entity_id": "cedcaa55-90b2-4397-95e8-1e8dbf564144",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:21:47"
+    },
+    {
+      "id": 243,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "c438ad84-6a3e-407b-a3cf-45753d6144dc",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:23:20"
+    },
+    {
+      "id": 244,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "c438ad84-6a3e-407b-a3cf-45753d6144dc",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:23:22"
+    },
+    {
+      "id": 245,
+      "entity": "QrCode",
+      "action": "REJECT",
+      "entity_id": "cedcaa55-90b2-4397-95e8-1e8dbf564144",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:30:53"
+    },
+    {
+      "id": 246,
+      "entity": "QrCode",
+      "action": "INGEST_MANUAL",
+      "entity_id": "5133001f-d4b0-4e07-97b1-c5c408b0c124",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:31:10"
+    },
+    {
+      "id": 247,
+      "entity": "QrCode",
+      "action": "APPROVE",
+      "entity_id": "5133001f-d4b0-4e07-97b1-c5c408b0c124",
+      "actor_id": "17ff510f-25f5-461a-92fd-a8103caa67f4",
+      "created_at": "2026-05-28 03:31:35"
+    }
+  ]
+}

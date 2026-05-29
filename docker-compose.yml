@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
+    ports:
+      - "3001:3001"
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_TYPE=postgres
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=aios
+      - DATABASE_PASS=aios_pass
+      - DATABASE_NAME=aios_db
+      - JWT_SECRET=super_secret_jwt_key
+      - CORS_ORIGINS=http://localhost:3000,chrome-extension://*
+    depends_on:
+      db:
+        condition: service_healthy
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: ./apps/dashboard/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+      - NEXT_PUBLIC_WS_URL=ws://localhost:3002
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: aios
+      POSTGRES_PASSWORD: aios_pass
+      POSTGRES_DB: aios_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aios"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

@@ -1,0 +1,52 @@
+# Caddyfile — proxy reverso com HTTPS automatico (Let's Encrypt)
+# Painel Capital Prime — VPS KingHost (177.153.202.47)
+#
+# Dois dominios atendidos:
+#   PRINCIPAL  -> pixcapitalprime.com.br  (configurar zona DNS .com.br -> 177.153.202.47)
+#   FALLBACK   -> capitaprimeofc.vps-kinghost.net  (ja resolve no painel KingHost)
+#
+# Registros A necessarios (cada nome -> 177.153.202.47):
+#   pixcapitalprime.com.br / www / api
+#   capitaprimeofc.vps-kinghost.net / www / api
+#
+# Caddy obtem e renova o certificado SSL de cada nome sozinho, de graca.
+# Blocos separados por dominio: se o .com.br ainda nao resolver, o cert dele
+# falha em background mas NAO derruba o vps-kinghost.net (que ja funciona).
+
+{
+	# E-mail para avisos de expiracao do certificado (opcional, recomendado).
+	# Descomente e troque pelo seu e-mail:
+	# email seu-email@pixcapitalprime.com.br
+}
+
+# ════════════════════════════════════════════════════════════
+# PRINCIPAL — pixcapitalprime.com.br
+# ════════════════════════════════════════════════════════════
+
+# Painel (Dashboard Next.js)
+pixcapitalprime.com.br, www.pixcapitalprime.com.br {
+	encode gzip zstd
+	reverse_proxy dashboard:3000
+}
+
+# API + WebSocket (Backend NestJS) — upgrade de WS repassado automaticamente.
+api.pixcapitalprime.com.br {
+	encode gzip zstd
+	reverse_proxy backend:3001
+}
+
+# ════════════════════════════════════════════════════════════
+# FALLBACK — capitaprimeofc.vps-kinghost.net (ja resolve)
+# ════════════════════════════════════════════════════════════
+
+# Painel (Dashboard Next.js)
+capitaprimeofc.vps-kinghost.net, www.capitaprimeofc.vps-kinghost.net {
+	encode gzip zstd
+	reverse_proxy dashboard:3000
+}
+
+# API + WebSocket (Backend NestJS)
+api.capitaprimeofc.vps-kinghost.net {
+	encode gzip zstd
+	reverse_proxy backend:3001
+}

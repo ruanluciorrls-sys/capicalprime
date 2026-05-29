@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 290px; padding: 16px; font-family: system-ui; background: #0a0a14; color: #e2e8f0; margin: 0; }
+    .header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #1e2235; }
+    .logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #f59e0b, #d97706); display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 4px 12px rgba(245,158,11,0.35); flex-shrink: 0; }
+    .brand h3 { margin: 0; font-size: 13px; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; background: linear-gradient(90deg, #fcd34d, #fef9c3, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .brand p { margin: 2px 0 0; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #78716c; }
+    .status-block { margin: 10px 0; }
+    .status { display: flex; align-items: center; gap: 8px; margin: 8px 0; font-size: 13px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: #ef4444; flex-shrink: 0; }
+    .dot.connected { background: #10b981; box-shadow: 0 0 6px #10b981; }
+    .version { font-size: 11px; color: #64748b; margin-bottom: 12px; }
+    .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    button { width: 100%; padding: 9px; background: linear-gradient(135deg, #f59e0b, #d97706); border: none; color: white; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 12px; letter-spacing: 0.03em; box-shadow: 0 2px 8px rgba(245,158,11,0.3); }
+    button:hover { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+    #test-result { font-size: 11px; margin-top: 10px; text-align: center; color: #94a3b8; min-height: 14px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">CP</div>
+    <div class="brand">
+      <h3>Capital Prime</h3>
+      <p>Pix Dashboard</p>
+    </div>
+  </div>
+
+  <div class="status-block">
+    <div class="status"><div class="dot" id="statusDot"></div><span id="statusText">Navegador: Desconectado</span></div>
+    <div class="status"><div class="dot" id="panelStatusDot"></div><span id="panelStatusText">Painel: Desconectado</span></div>
+  </div>
+
+  <div class="version">Versao <span id="version"></span></div>
+
+  <div class="btn-row">
+    <button id="testBtn" type="button">Teste QR</button>
+    <button id="testPanelBtn" type="button">Teste Painel</button>
+  </div>
+
+  <div id="test-result"></div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
