@@ -7,7 +7,12 @@ import { useExtensionStore } from '@/store/extensionStore';
 import { getApiKey, getAuthToken, clearAuth } from '@/lib/apiKey';
 import toast from 'react-hot-toast';
 
-const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? 'http://localhost:3001';
+// URL do WebSocket: usa variável de ambiente se disponível,
+// senão detecta ambiente automaticamente (produção = fly.dev, dev = localhost)
+const WS_URL = process.env.NEXT_PUBLIC_WS_URL
+  ?? (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')
+    ? 'https://meu-backend-aios.fly.dev'
+    : 'http://localhost:3001');
 
 let socket: Socket | null = null;
 
