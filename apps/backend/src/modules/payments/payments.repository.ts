@@ -78,4 +78,38 @@ export class PaymentsRepository {
     const result = await this.repo.delete({ userId, status: 'FAILED' });
     return result.affected ?? 0;
   }
+
+  async getStats(userId: string) {
+    const result = await this.repo
+      .createQueryBuilder('p')
+      .select('p.status', 'status')
+      .addSelect('COUNT(*)', 'count')
+      .addSelect('SUM(p.amount)', 'totalAmount')
+      .where('p.userId = :userId', { userId })
+      .groupBy('p.status')
+      .getRawMany();
+
+    const stats = {
+      total: 0,
+      successCount: 0,
+      failedCount: 0,
+      pendingCount: 0,
+      totalAmountPaid: 0,
+    };
+
+    result.forEach((row) => {
+      const count = parseInt(row.count, 10);
+      const amount = parseFloat(row.totalAmount) || 0;
+      stats.total += count;
+
+      if (row.status === 'SUCCESS') {
+        stats.successCount = count;
+        stats.totalAmountPaid = amount;
+      }
+      if (row.status === 'FAILED') stats.failedCount = count;
+      if (row.status === 'PENDING') stats.pendingCount = count;
+    });
+
+    return stats;
+  }
 }

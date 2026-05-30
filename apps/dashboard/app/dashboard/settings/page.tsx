@@ -51,6 +51,7 @@ export default function SettingsPage() {
   const [rotationMsg, setRotationMsg]           = useState('');
 
   const [saving, setSaving] = useState(false);
+  const [userRole, setUserRole] = useState<string>('USER');
 
   // ── Load configs from backend ──────────────────────────────────────────
   const loadConfigs = async () => {
@@ -61,6 +62,10 @@ export default function SettingsPage() {
       if (!res.ok) return;
       const data = await res.json();
       const asaas = data?.bankConfig?.asaas ?? {};
+      
+      if (data?.role) {
+        setUserRole(data.role);
+      }
 
       const mapped: Record<SlotKey, AsaasEnvironmentConfig | null> = {
         production:  asaas.production  ?? null,
@@ -191,7 +196,13 @@ export default function SettingsPage() {
       </div>
 
       {/* Account sections */}
-      {SLOTS.map(slot => {
+      {SLOTS.filter(slot => {
+        // Restringir Conta 2 e Conta 3 apenas para ADMIN / MASTER_ADMIN
+        if (slot.key === 'production2' || slot.key === 'production3') {
+          return userRole === 'ADMIN' || userRole === 'MASTER_ADMIN';
+        }
+        return true;
+      }).map(slot => {
         const s = slots[slot.key];
         const cfg = configs[slot.key];
         const sUI = statusUI(s.status);

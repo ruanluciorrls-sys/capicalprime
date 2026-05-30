@@ -47,13 +47,13 @@ function StatCard({ label, value, icon, accent, accentBg, accentBorder }: StatCa
 }
 
 export function StatsGrid() {
-  const { qrCodes, payments } = useQrStore();
+  const { qrCodes, payments, serverStats } = useQrStore();
 
-  const stats = {
+  const stats = serverStats ?? {
     pending:    qrCodes.filter(q => q.status === 'PENDING' || q.status === 'APPROVED' || q.status === 'PAYING').length,
-    approved:   qrCodes.filter(q => q.status === 'PAID').length,
+    paid:       qrCodes.filter(q => q.status === 'PAID').length,
     rejected:   qrCodes.filter(q => q.status === 'REJECTED' || q.status === 'ERROR' || q.status === 'CANCELLED').length,
-    amountPaid: payments.filter(p => p.status === 'SUCCESS').reduce((acc, p) => acc + p.amount, 0),
+    totalAmountPaid: payments.filter(p => p.status === 'SUCCESS').reduce((acc, p) => acc + p.amount, 0),
   };
 
   const BRL = (n: number) =>
@@ -71,7 +71,7 @@ export function StatsGrid() {
       />
       <StatCard
         label="Concluídas"
-        value={stats.approved}
+        value={stats.paid}
         icon={<CheckCircle2 className="w-4 h-4" />}
         accent="#34d399"
         accentBg="rgba(16,185,129,0.12)"
@@ -87,7 +87,7 @@ export function StatsGrid() {
       />
       <StatCard
         label="Total Pago"
-        value={BRL(stats.amountPaid)}
+        value={BRL(stats.totalAmountPaid)}
         icon={<DollarSign className="w-4 h-4" />}
         accent="#fcd34d"
         accentBg="rgba(245,158,11,0.10)"

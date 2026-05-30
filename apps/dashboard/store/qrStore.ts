@@ -62,6 +62,12 @@ interface QrStore {
   pendingCount: number;
   isConnected: boolean;
   availableBalance: number | null;
+  serverStats: {
+    pending: number;
+    paid: number;
+    rejected: number;
+    totalAmountPaid: number;
+  } | null;
 
   // Actions
   addQr: (qr: QrCode) => void;
@@ -79,6 +85,7 @@ interface QrStore {
   cancelQr: (id: string) => Promise<void>;
   deleteRawCapture: (id: string) => Promise<void>;
   fetchBalance: () => Promise<void>;
+  fetchStats: () => Promise<void>;
 }
 
 export const useQrStore = create<QrStore>()(
@@ -89,6 +96,7 @@ export const useQrStore = create<QrStore>()(
     pendingCount: 0,
     isConnected: false,
     availableBalance: null,
+    serverStats: null,
 
     addQr: (qr) =>
       set((state) => {
@@ -112,10 +120,27 @@ export const useQrStore = create<QrStore>()(
         const qr = state.qrCodes.find((q) => q.id === id);
         if (!qr) return;
         const wasPending = qr.status === 'PENDING';
+        const oldStatus = qr.status;
+        
         qr.status = status;
         if (extra) Object.assign(qr, extra);
         if (wasPending && status !== 'PENDING') state.pendingCount = Math.max(0, state.pendingCount - 1);
         if (!wasPending && status === 'PENDING') state.pendingCount++;
+
+        // Atualização otimista dos serverStats para manter o dashboard fluído
+        if (state.serverStats) {
+           if (status === 'PAID' && oldStatus !== 'PAID') {
+             state.serverStats.paid++;
+             state.serverStats.totalAmountPaid += (qr.amount || 0);
+           }
+           if (oldStatus === 'PAID' && status !== 'PAID') {
+             state.serverStats.paid = Math.max(0, state.serverStats.paid - 1);
+             state.serverStats.totalAmountPaid = Math.max(0, state.serverStats.totalAmountPaid - (qr.amount || 0));
+           }
+           if ((status === 'REJECTED' || status === 'ERROR') && oldStatus !== 'REJECTED' && oldStatus !== 'ERROR') {
+             state.serverStats.rejected++;
+           }
+        }
       }),
 
     addPayment: (payment) =>
@@ -131,7 +156,17 @@ export const useQrStore = create<QrStore>()(
     updatePaymentStatus: (data) =>
       set((state) => {
         const payment = state.payments.find((p) => p.qrCodeId === data.qrCodeId);
-        if (payment) Object.assign(payment, data);
+        if (!payment) return;
+        const oldStatus = payment.status;
+        Object.assign(payment, data);
+
+        // Atualização otimista caso seja PAYMENT_SUCCESS via socket e o QR não atualizou
+        if (state.serverStats) {
+          if (data.status === 'SUCCESS' && oldStatus !== 'SUCCESS') {
+            state.serverStats.totalAmountPaid += Number(payment.amount || 0);
+            state.serverStats.paid++;
+          }
+        }
         const qr = state.qrCodes.find((q) => q.id === data.qrCodeId);
         if (qr) {
           if (data.status === 'SUCCESS') qr.status = 'PAID';
@@ -243,13 +278,31 @@ export const useQrStore = create<QrStore>()(
       }
       const data = await res.json();
       set((state) => {
-        // Se configured=false (sem API key), mantém null para não exibir R$ 0,00
         if (data?.configured === false) {
           state.availableBalance = null;
           return;
         }
         state.availableBalance = typeof data?.available === 'number' ? data.available : null;
       });
+    },
+
+    fetchStats: async () => {
+      try {
+        const res = await fetch('/api/qr/stats', { headers: authHeaders() });
+        if (res.ok) {
+          const data = await res.json();
+          set((state) => {
+            state.serverStats = {
+              pending: data.pending + data.approved, // processando
+              paid: data.paid,
+              rejected: data.rejected + data.error + data.cancelled,
+              totalAmountPaid: data.totalAmountPaid
+            };
+          });
+        }
+      } catch (err) {
+        console.error('Failed to fetch stats', err);
+      }
     },
   })),
 );

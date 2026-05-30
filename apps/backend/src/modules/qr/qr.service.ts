@@ -11,6 +11,7 @@ import { PaginationDto } from '../../common/dto/pagination.dto';
 import { parsePix, normalizePixInput } from '@aios/shared';
 import { QrCodeEntity } from '../../database/entities/qr-code.entity';
 import { RawQrCaptureEntity } from '../../database/entities/raw-qr-capture.entity';
+import { PaymentEntity } from '../../database/entities/payment.entity';
 import { ExtensionDeviceEntity } from '../../database/entities/extension-device.entity';
 import { UserEntity } from '../../database/entities/user.entity';
 import { AuditLogService } from '../../common/services/audit-log.service';
@@ -42,6 +43,8 @@ export class QrService {
     private readonly qrRepo: QrRepository,
     @InjectRepository(RawQrCaptureEntity)
     private readonly rawCaptureRepo: Repository<RawQrCaptureEntity>,
+    @InjectRepository(PaymentEntity)
+    private readonly paymentsRepo: Repository<PaymentEntity>,
     @InjectRepository(UserEntity)
     private readonly userRepo: Repository<UserEntity>,
     private readonly eventEmitter: EventEmitter2,
@@ -390,7 +393,23 @@ export class QrService {
   }
 
   async getStats(userId: string) {
-    return this.qrRepo.getStats(userId);
+    const qrStats = await this.qrRepo.getStats(userId);
+    
+    const paymentResult = await this.paymentsRepo
+      .createQueryBuilder('p')
+      .select('COUNT(*)', 'count')
+      .addSelect('SUM(p.amount)', 'totalAmount')
+      .where('p.userId = :userId AND p.status = :status', { userId, status: 'SUCCESS' })
+      .getRawOne();
+
+    const successCount = parseInt(paymentResult?.count || '0', 10);
+    const totalAmountPaid = parseFloat(paymentResult?.totalAmount || '0');
+
+    return {
+      ...qrStats,
+      totalAmountPaid,
+      paid: successCount,
+    };
   }
 
   async cancel(id: string, userId: string): Promise<QrCodeEntity> {

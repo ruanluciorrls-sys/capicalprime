@@ -158,6 +158,32 @@ window.addEventListener('message', async (event) => {
         console.error('[CONTENT] Erro ao enviar Pix interceptado para o background:', err);
       }
     }
+  } else if (event.data && event.data.source === 'AIOS_PIX_CAPTURE' && event.data.type === 'NETWORK_INTERCEPT') {
+    const text = event.data.text;
+    if (isValidPixPayload(text)) {
+      console.log('[CONTENT] Pix interceptado via XHR/Fetch URL:', maskQr(text));
+      
+      try {
+        const response = await sendMessageToBackground({
+          type: 'PIX_CODE_DETECTED',
+          payload: text,
+          metadata: {
+            sourceUrl: window.location.href,
+            pageTitle: document.title,
+            capturedAt: new Date().toISOString(),
+            captureMethod: 'network_intercept'
+          }
+        });
+        
+        if (response.ok) {
+          console.log('[CONTENT] Pix interceptado enviado com sucesso para o painel.');
+        } else {
+          console.log('[CONTENT] Envio de Pix interceptado ignorado ou falhou:', response.error);
+        }
+      } catch (err) {
+        console.error('[CONTENT] Erro ao enviar Pix interceptado para o background:', err);
+      }
+    }
   }
 });
 

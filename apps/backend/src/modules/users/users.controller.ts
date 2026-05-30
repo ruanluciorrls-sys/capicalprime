@@ -33,6 +33,13 @@ export class UsersController {
     if (!allowed.includes(environment)) {
       throw new BadRequestException(`Environment must be one of: ${allowed.join(', ')}`);
     }
+
+    if (environment === 'production2' || environment === 'production3') {
+      if (req.user.role !== 'ADMIN' && req.user.role !== 'MASTER_ADMIN') {
+        throw new BadRequestException('Apenas administradores podem configurar contas Asaas secundárias para rodízio.');
+      }
+    }
+
     return this.usersService.updateAsaasConfig(req.user.id, environment, body.bankConfig || {}, body.dryRun);
   }
 

@@ -8,6 +8,7 @@ import { AuditLogEntity } from '../../database/entities/audit-log.entity';
 import { ExtensionDeviceEntity } from '../../database/entities/extension-device.entity';
 import { UserEntity } from '../../database/entities/user.entity';
 import { RawQrCaptureEntity } from '../../database/entities/raw-qr-capture.entity';
+import { PaymentEntity } from '../../database/entities/payment.entity';
 import { DeviceTokenGuard } from '../../common/guards/device-token.guard';
 import { ApiKeyGuard } from '../../common/guards/api-key.guard';
 import { CommonModule } from '../../common/common.module';
@@ -18,7 +19,7 @@ import { QrGateway } from './qr.gateway';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([QrCodeEntity, AuditLogEntity, ExtensionDeviceEntity, UserEntity, RawQrCaptureEntity]),
+    TypeOrmModule.forFeature([QrCodeEntity, AuditLogEntity, ExtensionDeviceEntity, UserEntity, RawQrCaptureEntity, PaymentEntity]),
     CommonModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],

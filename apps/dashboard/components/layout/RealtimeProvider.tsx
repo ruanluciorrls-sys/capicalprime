@@ -10,7 +10,7 @@ import { WifiOff } from 'lucide-react';
 export function RealtimeProvider({ children }: { children: React.ReactNode }) {
   useWebSocket();
 
-  const { initQrCodes, initRawCaptures, initPayments, fetchBalance } = useQrStore();
+  const { initQrCodes, initRawCaptures, initPayments, fetchBalance, fetchStats } = useQrStore();
   const { fetchAsaasData } = useAsaasStore();
   const [backendOk, setBackendOk] = useState<boolean | null>(null);
 
@@ -44,6 +44,7 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
       })
       .catch(console.error);
     fetchBalance().catch(console.error);
+    fetchStats().catch(console.error);
     fetchAsaasData().catch(console.error);
 
     // Polling de dados Asaas a cada 30 segundos
@@ -53,13 +54,14 @@ export function RealtimeProvider({ children }: { children: React.ReactNode }) {
 
     const interval = window.setInterval(() => {
       fetchBalance().catch(console.error);
+      fetchStats().catch(console.error);
     }, 60000);
 
     return () => {
       window.clearInterval(interval);
       window.clearInterval(asaasInterval);
     };
-  }, [initQrCodes, initRawCaptures, initPayments, fetchBalance]);
+  }, [initQrCodes, initRawCaptures, initPayments, fetchBalance, fetchStats]);
 
   if (backendOk === false) {
     return (
