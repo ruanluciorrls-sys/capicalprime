@@ -43,16 +43,33 @@ export class PaymentsRepository {
   }
 
   async findAllByUser(userId: string, pagination: PaginationDto) {
-    const { page = 1, limit = 20 } = pagination;
+    const { page = 1, limit = 20, status, startDate, endDate } = pagination;
     const skip = (page - 1) * limit;
 
-    const [items, total] = await this.repo.findAndCount({
-      where: { userId },
-      order: { createdAt: 'DESC' },
-      skip,
-      take: limit,
-      relations: ['qrCode'],
-    });
+    const qb = this.repo.createQueryBuilder('p')
+      .where('p.userId = :userId', { userId })
+      .leftJoinAndSelect('p.qrCode', 'qrCode');
+
+    if (status) {
+      qb.andWhere('p.status = :status', { status });
+    }
+
+    if (startDate) {
+      qb.andWhere('p.createdAt >= :startDate', { startDate: new Date(startDate) });
+    }
+
+    if (endDate) {
+      // Add 23:59:59 to endDate if it's just a date
+      const end = new Date(endDate);
+      end.setHours(23, 59, 59, 999);
+      qb.andWhere('p.createdAt <= :endDate', { endDate: end });
+    }
+
+    qb.orderBy('p.createdAt', 'DESC')
+      .skip(skip)
+      .take(limit);
+
+    const [items, total] = await qb.getManyAndCount();
 
     return { items, total, page, limit, totalPages: Math.ceil(total / limit) };
   }
