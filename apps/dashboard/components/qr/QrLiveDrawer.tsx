@@ -102,7 +102,11 @@ export function QrLiveDrawer() {
   const handleApproveAll = async () => {
     setApprovingAll(true);
     try {
-      await Promise.all(pending.map((q) => approveQr(q.id)));
+      for (const q of pending) {
+        await approveQr(q.id);
+        // Delay de 4s entre os QRs para evitar conflitos no Asaas e permitir baixa
+        await new Promise(resolve => setTimeout(resolve, 4000));
+      }
     } catch (e) {
       console.error(e);
     } finally {

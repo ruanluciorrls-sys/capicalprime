@@ -4,6 +4,7 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { getApiKey, authHeaders } from '@/lib/apiKey';
 import { getBalance } from '@/services/api';
+import toast from 'react-hot-toast';
 
 export type QrStatus = 'PENDING' | 'APPROVED' | 'PAYING' | 'REJECTED' | 'PAID' | 'ERROR' | 'CANCELLED' | 'RAW_CAPTURED';
 export type PaymentStatus = 'PENDING' | 'PROCESSING' | 'SUCCESS' | 'FAILED';
@@ -162,12 +163,39 @@ export const useQrStore = create<QrStore>()(
       }),
 
     approveQr: async (id, amount) => {
+      const qr = get().qrCodes.find(q => q.id === id);
+      if (!qr) throw new Error('QR não encontrado');
+      
+      const effectiveAmount = amount ?? qr.amount;
+      const { availableBalance } = get();
+      
+      // Validação de saldo (evita enviar para o backend e dar erro na fila)
+      if (effectiveAmount && availableBalance !== null && availableBalance < effectiveAmount) {
+        const msg = `Saldo insuficiente na Asaas!\nVocê tem R$ ${availableBalance.toFixed(2).replace('.', ',')} e a cobrança é de R$ ${effectiveAmount.toFixed(2).replace('.', ',')}.`;
+        toast.error(msg, {
+          icon: '⚠️',
+          duration: 5000,
+          style: { background: '#090d16', color: '#f87171', border: '1px solid rgba(239, 68, 68, 0.3)' }
+        });
+        throw new Error(msg);
+      }
+
       const res = await fetch(`/api/qr/${id}/approve`, {
         method: 'POST',
         headers: { ...authHeaders(), 'Content-Type': 'application/json' },
         body: amount ? JSON.stringify({ amount }) : undefined,
       });
       if (!res.ok) throw new Error('Falha ao aprovar QR Code');
+      
+      // Subtrai o saldo localmente para refletir aprovações em massa ou rápidas
+      if (effectiveAmount && availableBalance !== null) {
+        set((state) => {
+          if (state.availableBalance !== null) {
+            state.availableBalance -= effectiveAmount;
+          }
+        });
+      }
+      
       get().updateQrStatus(id, 'APPROVED', amount ? { amount } : undefined);
     },
 

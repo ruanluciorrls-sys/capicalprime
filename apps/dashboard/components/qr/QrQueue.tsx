@@ -96,6 +96,8 @@ export function QrQueue() {
         fail++;
       }
       setBulkProgress(prev => ({ ...prev, done: prev.done + 1 }));
+      // Delay de 4s entre aprovações para não conflitar com o Asaas
+      await new Promise(resolve => setTimeout(resolve, 4000));
     }
 
     setBulkPaying(false);

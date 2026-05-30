@@ -687,3 +687,8 @@
 ## [2.4.10] - 2024-05-29
 ### Adicionado
 - Extensão: Suporte ao escaneamento direto de imagens de QR Code renderizados como <svg>. Isso melhora significativamente a captura em sites modernos (bancos, sistemas novos) que desenham a figura do QR em SVG ao invés de usar botões de copiar ou textos convencionais.
+
+## [2.4.11] - 2024-05-29
+### Adicionado
+- Dashboard: Aviso dinâmico e antecipado de saldo insuficiente no Asaas ao tentar aprovar QRs na Fila, prevenindo erros genéricos do sistema de processamento de pagamentos.
+- Dashboard: Adicionado um intervalo de 4 segundos (\delay\) entre pagamentos da fila quando se usa a função \"Aprovar Todos\", para evitar gargalos e conflitos na liquidação Asaas em lote.
