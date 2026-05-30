@@ -96,6 +96,7 @@ export class QrRepository {
       rejected: 0,
       paid: 0,
       error: 0,
+      cancelled: 0,
       totalAmountPaid: 0,
       totalAmountPending: 0,
     };

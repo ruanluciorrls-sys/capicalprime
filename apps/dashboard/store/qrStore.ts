@@ -293,10 +293,10 @@ export const useQrStore = create<QrStore>()(
           const data = await res.json();
           set((state) => {
             state.serverStats = {
-              pending: data.pending + data.approved, // processando
-              paid: data.paid,
-              rejected: data.rejected + data.error + data.cancelled,
-              totalAmountPaid: data.totalAmountPaid
+              pending: (data.pending || 0) + (data.approved || 0), // processando
+              paid: (data.paid || 0),
+              rejected: (data.rejected || 0) + (data.error || 0) + (data.cancelled || 0),
+              totalAmountPaid: (data.totalAmountPaid || 0)
             };
           });
         }
