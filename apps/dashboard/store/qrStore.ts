@@ -93,6 +93,10 @@ export const useQrStore = create<QrStore>()(
     addQr: (qr) =>
       set((state) => {
         if (state.qrCodes.find((q) => q.id === qr.id)) return;
+        
+        // Ignora QRs brutos sem valor e sem destinatário (capturas sujas da extensão)
+        if (qr.isRaw && !qr.amount && !qr.merchantName) return;
+
         state.qrCodes.unshift(qr);
         if (qr.status === 'PENDING') state.pendingCount++;
       }),
@@ -142,8 +146,10 @@ export const useQrStore = create<QrStore>()(
 
     initQrCodes: (qrs) =>
       set((state) => {
-        state.qrCodes = qrs;
-        state.pendingCount = qrs.filter((q) => q.status === 'PENDING').length;
+        // Filtra QRs inúteis para não poluir o painel
+        const validQrs = qrs.filter(q => !(q.isRaw && !q.amount && !q.merchantName));
+        state.qrCodes = validQrs;
+        state.pendingCount = validQrs.filter((q) => q.status === 'PENDING').length;
       }),
 
     initRawCaptures: (captures) =>
