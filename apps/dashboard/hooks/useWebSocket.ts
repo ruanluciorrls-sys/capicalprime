@@ -19,7 +19,7 @@ let socket: Socket | null = null;
 export function useWebSocket() {
   const {
     addQr, addRawCapture, updateQrStatus, updatePaymentStatus,
-    addPayment, setConnected, enrichQr
+    addPayment, setConnected, enrichQr, fetchBalance
   } = useQrStore();
   const { upsertDevice } = useExtensionStore();
 
@@ -161,6 +161,7 @@ export function useWebSocket() {
     socket.on('PAYMENT_SUCCESS', (event: any) => {
       const d = event?.data ?? event;
       updatePaymentStatus({ ...d, id: d.paymentId ?? d.id });
+      fetchBalance().catch(() => {});
       const amountStr = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(d.amount);
       toast.success(`Pagamento Concluído com sucesso:\n${amountStr}!`, {
         icon: '✅',
@@ -180,6 +181,7 @@ export function useWebSocket() {
     socket.on('PAYMENT_FAILED', (event: any) => {
       const d = event?.data ?? event;
       updatePaymentStatus({ ...d, id: d.paymentId ?? d.id });
+      fetchBalance().catch(() => {});
       toast.error(`Pagamento Falhou:\n${d.errorMessage ?? 'Erro inesperado'}`, {
         icon: '🚨',
         duration: 6000,
@@ -237,7 +239,7 @@ export function useWebSocket() {
       clearAuth();
       setTimeout(() => { window.location.href = '/login'; }, 1500);
     });
-  }, [addQr, addRawCapture, updateQrStatus, updatePaymentStatus, addPayment, setConnected, upsertDevice, enrichQr]);
+  }, [addQr, addRawCapture, updateQrStatus, updatePaymentStatus, addPayment, setConnected, upsertDevice, enrichQr, fetchBalance]);
 
   useEffect(() => {
     if (initialized.current) return;
