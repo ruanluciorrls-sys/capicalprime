@@ -255,7 +255,7 @@ function findPixTextOnPage() {
 // ==================== PRIORIDADE 3 – Scanner jsQR ====================
 async function scanCanvasAndImages() {
   if (typeof jsQR === 'undefined') return null;
-  const elements = [...document.querySelectorAll('canvas, img')];
+  const elements = [...document.querySelectorAll('canvas, img, svg')];
   for (const el of elements) {
     let imageData = null;
     try {
@@ -276,6 +276,22 @@ async function scanCanvasAndImages() {
         const ctx = canvas.getContext('2d', { willReadFrequently: true });
         if (!ctx) continue;
         ctx.drawImage(el, 0, 0);
+        imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      } else if (el instanceof SVGSVGElement) {
+        const xml = new XMLSerializer().serializeToString(el);
+        const svg64 = btoa(unescape(encodeURIComponent(xml)));
+        const img = new Image();
+        img.src = 'data:image/svg+xml;base64,' + svg64;
+        await new Promise(r => { img.onload = r; img.onerror = r; });
+        if (img.width === 0 || img.height === 0) continue;
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        if (!ctx) continue;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
         imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       }
 

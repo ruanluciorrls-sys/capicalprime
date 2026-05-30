@@ -683,3 +683,7 @@
 
 ### Corrigido
 - Erro 'QR sem valor' ao tentar aprovar pagamentos Pix cujos valores não estavam no QR Code (PIX dinâmicos não enriquecidos pelo Asaas).
+
+## [2.4.10] - 2024-05-29
+### Adicionado
+- Extensão: Suporte ao escaneamento direto de imagens de QR Code renderizados como <svg>. Isso melhora significativamente a captura em sites modernos (bancos, sistemas novos) que desenham a figura do QR em SVG ao invés de usar botões de copiar ou textos convencionais.
