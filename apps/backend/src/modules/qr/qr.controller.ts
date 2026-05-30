@@ -75,7 +75,7 @@ export class QrController {
     @Body() dto: ApproveQrDto,
     @Request() req: any,
   ) {
-    return this.qrService.approve(id, req.user.id);
+    return this.qrService.approve(id, req.user.id, dto.amount);
   }
 
   // ── Dashboard: reject QR code ─────────────────────────────

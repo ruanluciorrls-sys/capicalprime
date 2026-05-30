@@ -73,7 +73,7 @@ interface QrStore {
   initRawCaptures: (captures: RawQrCapture[]) => void;
   initPayments: (payments: Payment[]) => void;
   enrichQr: (id: string, data: Partial<QrCode>) => void;
-  approveQr: (id: string) => Promise<void>;
+  approveQr: (id: string, amount?: number) => Promise<void>;
   rejectQr: (id: string) => Promise<void>;
   cancelQr: (id: string) => Promise<void>;
   deleteRawCapture: (id: string) => Promise<void>;
@@ -161,13 +161,14 @@ export const useQrStore = create<QrStore>()(
         if (qr) Object.assign(qr, data);
       }),
 
-    approveQr: async (id) => {
+    approveQr: async (id, amount) => {
       const res = await fetch(`/api/qr/${id}/approve`, {
         method: 'POST',
-        headers: authHeaders(),
+        headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+        body: amount ? JSON.stringify({ amount }) : undefined,
       });
       if (!res.ok) throw new Error('Falha ao aprovar QR Code');
-      get().updateQrStatus(id, 'APPROVED');
+      get().updateQrStatus(id, 'APPROVED', amount ? { amount } : undefined);
     },
 
     rejectQr: async (id) => {

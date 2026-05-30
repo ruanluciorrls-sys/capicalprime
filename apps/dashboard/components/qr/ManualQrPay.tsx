@@ -19,22 +19,26 @@ const BRL = (n: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', c
  *
  * Retorna array de payloads limpos (sem espaços/invisíveis). Vazio se nenhum encontrado.
  */
-function normalizePixText(text: string) {
-  return String(text || '')
+function normalizePixPayload(text: string) {
+  if (!text) return '';
+  let value = String(text);
+  for (let i = 0; i < 2; i++) {
+    try {
+      const decoded = decodeURIComponent(value);
+      if (decoded === value) break;
+      value = decoded;
+    } catch {
+      break;
+    }
+  }
+  return value
     .replace(/\s+/g, '')
     .replace(/\u200B|\u200C|\u200D/g, '')
     .trim();
 }
 
-function normalizePixPayload(text: string) {
-  return String(text || '')
-    .replace(/\u200B|\u200C|\u200D/g, '')
-    .replace(/[\r\n\t]/g, '')
-    .trim();
-}
-
 function isPixCandidate(text: string) {
-  const clean = normalizePixText(text);
+  const clean = normalizePixPayload(text);
   return (
     clean.length >= 80 &&
     clean.startsWith('000201') &&
@@ -44,12 +48,12 @@ function isPixCandidate(text: string) {
 }
 
 function extractPixPayloadsFromText(text: string): string[] {
-  const clean = String(text || '')
+  const raw = String(text || '')
     .replace(/\u200B|\u200C|\u200D/g, '')
     .trim();
 
   const regex = /000201[\s\S]*?br\.gov\.bcb\.pix[\s\S]*?6304[A-F0-9]{4}/gi;
-  const matches = clean.match(regex) || [];
+  const matches = raw.match(regex) || [];
 
   return Array.from(
     new Set(

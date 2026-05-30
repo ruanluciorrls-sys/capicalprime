@@ -244,7 +244,7 @@ export function QrQueue() {
             <QrCard
               key={qr.id}
               qr={qr}
-              onApprove={() => approveQr(qr.id)}
+              onApprove={(amount?: number) => approveQr(qr.id, amount)}
               onReject={() => rejectQr(qr.id)}
               onCancel={() => cancelQr(qr.id)}
             />
@@ -257,25 +257,33 @@ export function QrQueue() {
 
 function QrCard({ qr, onApprove, onReject, onCancel }: any) {
   const [loading, setLoading] = useState<'approve' | 'reject' | 'cancel' | null>(null);
+  const [manualAmount, setManualAmount] = useState('');
 
-  const act = async (type: 'approve' | 'reject' | 'cancel', fn: () => Promise<void>) => {
+  const secondsSinceCapture = (Date.now() - new Date(qr.capturedAt).getTime()) / 1000;
+  const enrichmentTimedOut = secondsSinceCapture > 15;
+
+  const act = async (type: 'approve' | 'reject' | 'cancel', fn: (amt?: number) => Promise<void>) => {
     setLoading(type);
-    try { await fn(); } catch { alert('Erro ao realizar ação'); } finally { setLoading(null); }
+    try {
+      const parsedAmount = type === 'approve' && manualAmount ? parseFloat(manualAmount.replace(',', '.')) : undefined;
+      if (type === 'approve' && !qr.amount && enrichmentTimedOut && (!parsedAmount || parsedAmount <= 0)) {
+        alert('Por favor, insira um valor válido antes de aprovar.');
+        setLoading(null);
+        return;
+      }
+      await fn(parsedAmount);
+    } catch { alert('Erro ao realizar ação'); } finally { setLoading(null); }
   };
 
   const timeAgo = formatDistanceToNow(new Date(qr.capturedAt), { addSuffix: true, locale: ptBR });
   const BRL = (n: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(n);
 
-  // Re-renderiza a cada 5s para atualizar o estado de "buscando vs expirado"
   const [, force] = useState(0);
   useEffect(() => {
     if (qr.amount || qr.institutionName) return; // já enriquecido, não precisa atualizar
     const t = setInterval(() => force(n => n + 1), 5000);
     return () => clearInterval(t);
   }, [qr.amount, qr.institutionName]);
-
-  const secondsSinceCapture = (Date.now() - new Date(qr.capturedAt).getTime()) / 1000;
-  const enrichmentTimedOut = secondsSinceCapture > 15;
 
   return (
     <div
@@ -372,16 +380,30 @@ function QrCard({ qr, onApprove, onReject, onCancel }: any) {
           </div>
         )}
 
-        {/* Timeout — Asaas não retornou valor após 15s (PIX provavelmente expirado) */}
+        {/* Timeout — Asaas não retornou valor após 15s (PIX provavelmente expirado ou sem valor) */}
         {qr.canPay && !qr.institutionName && !qr.amount && enrichmentTimedOut && (
           <div
-            className="flex items-start gap-2 p-2.5 rounded-xl text-[11px]"
+            className="flex flex-col gap-2 p-2.5 rounded-xl text-[11px]"
             style={{ background: 'rgba(251,146,60,0.08)', border: '1px solid rgba(251,146,60,0.22)', color: '#fb923c' }}
           >
-            <ShieldAlert className="w-3 h-3 flex-shrink-0 mt-0.5" />
-            <span>
-              Valor indisponível — PIX dinâmico expirado ou inativo. O valor será re-consultado automaticamente ao aprovar.
-            </span>
+            <div className="flex items-start gap-2">
+              <ShieldAlert className="w-3 h-3 flex-shrink-0 mt-0.5" />
+              <span>
+                Valor indisponível via Asaas. Por favor, insira o valor manualmente para aprovar.
+              </span>
+            </div>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-amber-500 font-bold ml-1">R$</span>
+              <input
+                type="number"
+                step="0.01"
+                min="0.01"
+                value={manualAmount}
+                onChange={e => setManualAmount(e.target.value)}
+                placeholder="0.00"
+                className="w-full bg-transparent border-b border-amber-500/30 text-white focus:outline-none focus:border-amber-500 pb-1 px-1 font-mono"
+              />
+            </div>
           </div>
         )}
 

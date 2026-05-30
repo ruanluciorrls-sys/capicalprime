@@ -1,4 +1,4 @@
-﻿import {
+import {
   Injectable, ConflictException, NotFoundException,
   BadRequestException, Logger
 } from '@nestjs/common';
@@ -335,17 +335,18 @@ export class QrService {
     return qr;
   }
 
-  async approve(id: string, approverId: string): Promise<QrCodeEntity> {
+  async approve(id: string, approverId: string, amount?: number): Promise<QrCodeEntity> {
     const qr = await this.findOne(id, approverId);
 
     if (qr.status !== 'PENDING') {
-      throw new BadRequestException(`QR Code estÃ¡ com status ${qr.status}, nÃ£o pode ser aprovado.`);
+      throw new BadRequestException(`QR Code está com status ${qr.status}, não pode ser aprovado.`);
     }
 
     const updated = await this.qrRepo.updateStatus(id, 'APPROVED', {
       approvedAt: new Date(),
       approvedBy: approverId,
-    });
+      ...(amount && amount > 0 ? { amount } : {}),
+    } as any);
 
     this.logger.log(`QR approved: ${id} | by: ${approverId}`);
 

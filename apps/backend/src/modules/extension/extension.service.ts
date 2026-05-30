@@ -13,7 +13,7 @@ import { EventEmitter2 } from '@nestjs/event-emitter';
 @Injectable()
 export class ExtensionService {
   private readonly logger = new Logger(ExtensionService.name);
-  private readonly EXTENSION_VERSION = '2.4.6';
+  private readonly EXTENSION_VERSION = '2.4.9';
   private readonly DEFAULT_VPS_PUBLIC_ORIGIN = 'http://177.153.202.47:3001';
   private readonly FORCED_EXTENSION_PUBLIC_ORIGIN =
     (process.env.EXTENSION_FORCE_PUBLIC_ORIGIN || '').trim();

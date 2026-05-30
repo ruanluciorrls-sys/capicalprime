@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [2.4.8] - 2026-05-30
+
+### Corrigido / Melhorado
+
+- **Painel — Botão flutuante "QRs"**: O botão não aparece mais na tela "Fila QR Codes" (`/dashboard/qr-queue`), pois a funcionalidade é idêntica à da própria página. Continua visível em todas as outras telas.
+- **Extensão — Leitura do novo layout "PIX CÓPIA E COLA"**: Adicionado reconhecimento do botão com texto "PIX CÓPIA E COLA" e variações ("pix copia e cola", "pix copia"), comum em sites de depósito estilo gambling. A leitura existente não foi alterada.
+- **Extensão — Filtro de segurança (só Pix válido)**: A extensão agora descarta qualquer conteúdo capturado por QR code (jsQR, canvas, imagem) que não seja um payload Pix real (padrão `000201...br.gov.bcb.pix...6304XXXX`). Textos genéricos, URLs e QR codes de outros tipos são ignorados sem impacto na leitura via botão nativo.
+- **Antitradução automática**: Adicionado `translate="no"` no `<html>` do painel para evitar crash do React quando o Google Translate do Chrome tenta traduzir a página.
+
+### Versão
+- Sistema, Backend, Dashboard, Extension: `2.4.7` -> `2.4.8`
+
 ## [2.4.7] - 2026-05-29
 
 ### Alterado
@@ -664,3 +676,10 @@
 
 
 
+
+## [2.4.9] - 2024-05-29
+### Adicionado
+- Possibilidade de informar o valor manualmente para QRs din�micos sem valor ao tentar aprovar no painel.
+
+### Corrigido
+- Erro 'QR sem valor' ao tentar aprovar pagamentos Pix cujos valores n�o estavam no QR Code (PIX din�micos n�o enriquecidos pelo Asaas).

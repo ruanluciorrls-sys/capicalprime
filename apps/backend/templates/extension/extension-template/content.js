@@ -1,4 +1,4 @@
-﻿// content.js â€” AI OS Pix Capture Extension (Content Script)
+// content.js â€” AI OS Pix Capture Extension (Content Script)
 
 // ==================== UTILITÃRIOS ====================
 function normalizeLabel(text) {
@@ -161,7 +161,7 @@ window.addEventListener('message', async (event) => {
   }
 });
 
-// ==================== PRIORIDADE 1 â€“ Localizar BotÃ£o ====================
+// ==================== PRIORIDADE 1 — Localizar Botão ====================
 function findCopyQrButton() {
   const elements = Array.from(document.querySelectorAll('button, div[role="button"], a, span, p'));
   return elements.find(el => {
@@ -172,6 +172,8 @@ function findCopyQrButton() {
            text.includes('endereco do codigo qr') ||
            text.includes('endereco qr') ||
            text.includes('copia e cola') ||
+           text.includes('pix copia e cola') ||
+           text.includes('pix copia') ||
            text.includes('copiar pix');
   });
 }
@@ -192,7 +194,7 @@ function findAddressQrCopyButton() {
   }) || null;
 }
 
-// ==================== FUNÃ‡ÃƒO DE CLIQUE E LEITURA (PRIORIDADE 1) ====================
+// ==================== FUNÇÃO DE CLIQUE E LEITURA (PRIORIDADE 1) ====================
 async function tryCopyAndCapture(button) {
   let before = '';
   try {
@@ -201,28 +203,28 @@ async function tryCopyAndCapture(button) {
     // Falha silenciosa de foco
   }
 
-  console.log('[CONTENT] BotÃ£o de copiar encontrado.');
+  console.log('[CONTENT] Botão de copiar encontrado.');
   button.click();
-  console.log('[CONTENT] BotÃ£o de copiar clicado.');
+  console.log('[CONTENT] Botão de copiar clicado.');
   await new Promise(r => setTimeout(r, 800));
   
   let after = '';
   try {
     after = await navigator.clipboard.readText();
   } catch (e) {
-    console.error('[CONTENT] Erro ao ler clipboard apÃ³s clique (provÃ¡vel aba sem foco):', e);
+    console.error('[CONTENT] Erro ao ler clipboard após clique (provável aba sem foco):', e);
     return null;
   }
 
   if (after && before && normalizePixPayload(after) === normalizePixPayload(before)) {
-    console.log('[CONTENT] ConteÃºdo do clipboard nÃ£o mudou apÃ³s o clique.');
+    console.log('[CONTENT] Conteúdo do clipboard não mudou após o clique.');
     return null;
   }
 
   return after ? after.trim() : null;
 }
 
-// ==================== PRIORIDADE 2 â€“ ExtraÃ§Ã£o de Textos VisÃ­veis (Regex) ====================
+// ==================== PRIORIDADE 2 – Extração de Textos Visíveis (Regex) ====================
 function findPixTextOnPage() {
   const fromUrl = extractPixFromUrl(window.location.href);
   if (fromUrl.length) return fromUrl[0];
@@ -250,7 +252,7 @@ function findPixTextOnPage() {
   return null;
 }
 
-// ==================== PRIORIDADE 3 â€“ Scanner jsQR ====================
+// ==================== PRIORIDADE 3 – Scanner jsQR ====================
 async function scanCanvasAndImages() {
   if (typeof jsQR === 'undefined') return null;
   const elements = [...document.querySelectorAll('canvas, img')];
@@ -280,7 +282,8 @@ async function scanCanvasAndImages() {
       if (imageData) {
         const code = jsQR(imageData.data, imageData.width, imageData.height);
         if (code && code.data) {
-          return code.data.trim();
+          const candidate = normalizePixPayload(code.data.trim());
+          if (isValidPixPayload(candidate)) return candidate;
         }
       }
     } catch (err) {
@@ -290,12 +293,12 @@ async function scanCanvasAndImages() {
   return null;
 }
 
-// ==================== SCANNER PERIÃ“DICO (FUNÃ‡ÃƒO PRINCIPAL) ====================
+// ==================== SCANNER PERIÓDICO (FUNÇÃO PRINCIPAL) ====================
 async function scanAndCaptureRaw() {
   console.log('[CONTENT] Scanner executando...');
   if (isProcessing) return;
 
-  // Busca inicial por elementos elegÃ­veis na pÃ¡gina
+  // Busca inicial por elementos elegíveis na página
   const btn1 = findCopyQrButton();
   const btn2 = findAddressQrCopyButton();
   const canvasOrImg = document.querySelector('canvas, img');
@@ -304,12 +307,12 @@ async function scanAndCaptureRaw() {
   const detected = !!(btn1 || btn2 || canvasOrImg || visiblePixText);
   if (!detected) return;
 
-  console.log('[CONTENT] QR Code detectado na pÃ¡gina.');
+  console.log('[CONTENT] QR Code detectado na página.');
 
   let rawContent = null;
   let method = '';
 
-  // PRIORIDADE 1: Clicar no botÃ£o nativo
+  // PRIORIDADE 1: Clicar no botão nativo
   if (btn1) {
     rawContent = await tryCopyAndCapture(btn1);
     if (rawContent) method = 'copy_button';
@@ -320,9 +323,9 @@ async function scanAndCaptureRaw() {
     if (rawContent) method = 'address_icon';
   }
 
-  // PRIORIDADE 2: Regex de textos visÃ­veis
+  // PRIORIDADE 2: Regex de textos visíveis
   if (!rawContent && visiblePixText) {
-    console.log('[CONTENT] Fallback: Extraindo QR Code diretamente de textos visÃ­veis na pÃ¡gina.');
+    console.log('[CONTENT] Fallback: Extraindo QR Code diretamente de textos visíveis na página.');
     rawContent = visiblePixText;
     method = 'visible_text';
   }
@@ -334,13 +337,19 @@ async function scanAndCaptureRaw() {
     if (rawContent) method = 'jsqr_fallback';
   }
 
-  // Se nada novo ou vÃ¡lido pÃ´de ser lido, aborta (a trava continuarÃ¡ ativa pelos prÃ³ximos 60s)
+  // Se nada novo ou válido pôde ser lido, aborta
   if (!rawContent) {
-    console.log('[CONTENT] Nenhum QR Code novo pÃ´de ser extraÃ­do neste ciclo. Entrando em cooldown.');
+    console.log('[CONTENT] Nenhum QR Code novo pôde ser extraído neste ciclo. Entrando em cooldown.');
     return;
   }
 
-  console.log('[CONTENT] QR Code capturado, enviando para background.');
+  // Guarda final: só envia se for um payload Pix válido — nunca envia URLs ou texto genérico
+  if (!isValidPixPayload(rawContent)) {
+    console.log('[CONTENT] Conteúdo capturado não é um Pix válido, descartando.');
+    return;
+  }
+
+  console.log('[CONTENT] QR Code Pix válido capturado, enviando para background.');
 
   try {
     const response = await sendMessageToBackground({

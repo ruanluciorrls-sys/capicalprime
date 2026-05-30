@@ -77,10 +77,10 @@ export function QrLiveDrawer() {
     });
   };
 
-  const handleApprove = async (id: string) => {
+  const handleApprove = async (id: string, amount?: number) => {
     setLoading(id, true);
     try {
-      await approveQr(id);
+      await approveQr(id, amount);
     } catch (e) {
       console.error(e);
     } finally {
@@ -320,12 +320,33 @@ function QrCard({
 }: {
   qr: QrCode;
   loading: boolean;
-  onApprove: (id: string) => void;
+  onApprove: (id: string, amount?: number) => void;
   onReject: (id: string) => void;
 }) {
-  const amount = qr.amount != null ? `R$ ${Number(qr.amount).toFixed(2).replace('.', ',')}` : '—';
+  const [manualAmount, setManualAmount] = useState('');
+  const amountStr = qr.amount != null ? `R$ ${Number(qr.amount).toFixed(2).replace('.', ',')}` : 'Valor em aberto';
   const merchant = qr.merchantName ?? 'Comerciante desconhecido';
   const institution = (qr as any).institutionName ?? null;
+
+  const secondsSinceCapture = (Date.now() - new Date(qr.capturedAt).getTime()) / 1000;
+  const enrichmentTimedOut = secondsSinceCapture > 15;
+
+  // Re-renderiza a cada 5s para atualizar timeout
+  const [, force] = useState(0);
+  useEffect(() => {
+    if (qr.amount || qr.institutionName) return;
+    const t = setInterval(() => force(n => n + 1), 5000);
+    return () => clearInterval(t);
+  }, [qr.amount, qr.institutionName]);
+
+  const handleApprove = () => {
+    const parsedAmount = manualAmount ? parseFloat(manualAmount.replace(',', '.')) : undefined;
+    if (!qr.amount && enrichmentTimedOut && (!parsedAmount || parsedAmount <= 0)) {
+      alert('Por favor, insira um valor válido antes de aprovar.');
+      return;
+    }
+    onApprove(qr.id, parsedAmount);
+  };
 
   return (
     <div
@@ -338,7 +359,7 @@ function QrCard({
     >
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
-          <p className="text-white font-bold text-base tracking-tight">{amount}</p>
+          <p className="text-white font-bold text-base tracking-tight">{amountStr}</p>
           <p className="text-slate-400 text-xs truncate mt-0.5">{merchant}</p>
           {institution && <p className="text-slate-500 text-[10px] truncate">{institution}</p>}
         </div>
@@ -354,9 +375,30 @@ function QrCard({
         <p className="text-slate-600 text-[10px] truncate font-mono">{qr.sourceUrl.replace(/^https?:\/\//, '')}</p>
       )}
 
+      {/* Manual Input se sem valor */}
+      {!qr.amount && enrichmentTimedOut && (
+        <div className="flex flex-col gap-2 p-2.5 rounded-xl text-[11px]" style={{ background: 'rgba(251,146,60,0.08)', border: '1px solid rgba(251,146,60,0.22)' }}>
+          <div className="flex items-start gap-2" style={{ color: '#fb923c' }}>
+            <span className="font-semibold">Valor não identificado pelo Asaas.</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-amber-500 font-bold ml-1">R$</span>
+            <input
+              type="number"
+              step="0.01"
+              min="0.01"
+              value={manualAmount}
+              onChange={e => setManualAmount(e.target.value)}
+              placeholder="0.00"
+              className="w-full bg-transparent border-b border-amber-500/30 text-white focus:outline-none focus:border-amber-500 pb-1 px-1 font-mono"
+            />
+          </div>
+        </div>
+      )}
+
       <div className="flex gap-2">
         <button
-          onClick={() => onApprove(qr.id)}
+          onClick={handleApprove}
           disabled={loading}
           className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-bold text-white transition-all hover:scale-[1.02] disabled:opacity-50"
           style={{ background: 'linear-gradient(135deg,#059669,#047857)' }}

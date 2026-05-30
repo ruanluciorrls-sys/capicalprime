@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { RealtimeProvider } from '@/components/layout/RealtimeProvider';
 import Header from '@/components/layout/Header';
@@ -11,6 +12,9 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isQrQueuePage = pathname === '/dashboard/qr-queue';
+
   return (
     <AuthGuard>
     <RealtimeProvider>
@@ -25,7 +29,8 @@ export default function DashboardLayout({
           </main>
         </div>
       </div>
-      <QrLiveDrawer />
+      {/* Não exibe o botão flutuante QRs na página de Fila QR (funcionalidade duplicada) */}
+      {!isQrQueuePage && <QrLiveDrawer />}
     </RealtimeProvider>
     </AuthGuard>
   );
